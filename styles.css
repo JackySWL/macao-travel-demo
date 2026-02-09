@@ -152,9 +152,9 @@ body {
 
 .main-content {
     display: grid;
-    grid-template-columns: 420px 1fr;
+    grid-template-columns: 400px 1fr;
     height: calc(100vh - 60px);
-    min-height: 600px;
+    min-height: 700px;
 }
 
 /* ========================================
@@ -854,21 +854,19 @@ body {
    ======================================== */
 
 .right-panel {
-    display: flex;
-    flex-direction: column;
+    display: grid;
+    grid-template-rows: 1fr 240px;
     background: var(--bg-primary);
-    min-height: 0;
+    gap: 0;
 }
 
 .map-section {
-    flex: 1;
-    min-height: 300px;
     position: relative;
-    margin: 16px;
-    margin-bottom: 8px;
+    margin: 16px 16px 8px 16px;
     border-radius: var(--radius-lg);
     overflow: hidden;
     box-shadow: var(--shadow-card);
+    min-height: 350px;
 }
 
 #google-map {
@@ -967,9 +965,7 @@ body {
    ======================================== */
 
 .timeline-section {
-    height: 200px;
-    min-height: 180px;
-    max-height: 220px;
+    height: 240px;
     background: var(--bg-secondary);
     margin: 8px 16px 16px 16px;
     border-radius: var(--radius-lg);
@@ -977,7 +973,6 @@ body {
     display: flex;
     flex-direction: column;
     overflow: hidden;
-    flex-shrink: 0;
 }
 
 .timeline-header {
@@ -1101,8 +1096,7 @@ body {
     border-radius: var(--radius-md);
     margin: 4px 0;
     border: 2px dashed var(--bg-border);
-    min-height: 70px;
-    max-height: 90px;
+    min-height: 100px;
     transition: var(--transition-fast);
 }
 
@@ -1157,8 +1151,8 @@ body {
 /* Timeline Items - Attraction (Rectangle) */
 .timeline-item {
     position: absolute;
-    height: 56px;
-    top: 22px;
+    height: 50px;
+    top: 25px;
     border-radius: var(--radius-sm);
     user-select: none;
     overflow: visible;
