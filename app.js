@@ -363,7 +363,7 @@ function generateAIResponse(userMsg, tab) {
     } else if (lowerMsg.includes('food') || lowerMsg.includes('eat') || lowerMsg.includes('吃') || lowerMsg.includes('食')) {
         return tabResponses.food;
     } else if (lowerMsg.includes('recommend') || lowerMsg.includes('推荐') || lowerMsg.includes('建议')) {
-        return tabRoutes.recommend;
+        return tabResponses.recommend || langResponses.routes.recommend || tabResponses.default;
     } else if (lowerMsg.includes('time') || lowerMsg.includes('hour') || lowerMsg.includes('时间') || lowerMsg.includes('多久')) {
         return tabResponses.time;
     } else if (lowerMsg.includes('ruins') || lowerMsg.includes('大三巴')) {
@@ -450,6 +450,7 @@ function initTimeline() {
     
     // Initialize time axis dragging (shifts all items)
     initTimeAxisDrag(timeAxis, track);
+    initTimeMarkerNavigation(timeAxis, track);
     
     items.forEach(item => {
         makeDraggable(item, track);
@@ -592,6 +593,39 @@ function initItemActions(item) {
     });
 }
 
+function initTimeMarkerNavigation(timeAxis, track) {
+    if (!timeAxis || !track) return;
+
+    const markers = timeAxis.querySelectorAll('.time-marker');
+    const itemsSelector = '.timeline-item.attraction-item-timeline';
+
+    markers.forEach(marker => {
+        marker.addEventListener('click', () => {
+            markers.forEach(m => m.classList.remove('is-selected'));
+            marker.classList.add('is-selected');
+
+            const firstItem = track.querySelector(itemsSelector);
+            if (!firstItem) return;
+
+            const itemLeft = parseFloat(firstItem.style.left) || 0;
+            const targetLeft = parseFloat(marker.style.left) || 0;
+            const delta = targetLeft - itemLeft;
+
+            const allItems = track.querySelectorAll('.timeline-item');
+            allItems.forEach(item => {
+                const left = parseFloat(item.style.left) || 0;
+                const nextLeft = Math.max(0, Math.min(96, left + delta));
+                item.style.left = `${nextLeft}%`;
+                item.dataset.baseLeft = nextLeft;
+                updateTimeTooltip(item, nextLeft);
+            });
+
+            showToast(`已跳转到 ${marker.dataset.time}:00 时间段`);
+            checkConflicts();
+        });
+    });
+}
+
 function initTimelineActions() {
     const clearBtn = document.getElementById('clear-timeline');
     const optimizeBtn = document.getElementById('optimize-route');
@@ -725,12 +759,14 @@ function optimizeTimeline() {
 function updateTimeTooltip(item, leftPercent) {
     const tooltip = item.querySelector('.time-tooltip');
     if (!tooltip) return;
-    
-    const startTime = percentToTime(leftPercent);
-    const duration = parseInt(item.dataset.duration) || 60;
-    const endPercent = leftPercent + (duration / 960) * 100 * (100 / parseFloat(item.style.width));
-    const endTime = percentToTime(leftPercent + (duration / 960) * 100 * 3.5);
-    
+
+    const duration = parseInt(item.dataset.duration, 10) || 60;
+    const startTotalMins = 8 * 60 + (leftPercent / 100) * (16 * 60);
+    const endTotalMins = startTotalMins + duration;
+
+    const startTime = minutesToTime(startTotalMins);
+    const endTime = minutesToTime(endTotalMins);
+
     tooltip.textContent = `${startTime} - ${endTime}`;
 }
 
@@ -738,6 +774,13 @@ function percentToTime(percent) {
     const totalMinutes = 8 * 60 + (percent / 100) * (16 * 60);
     const hours = Math.floor(totalMinutes / 60);
     const minutes = Math.floor(totalMinutes % 60);
+    return `${hours.toString().padStart(2, '0')}:${minutes.toString().padStart(2, '0')}`;
+}
+
+function minutesToTime(totalMinutes) {
+    const normalized = Math.max(0, Math.round(totalMinutes));
+    const hours = Math.floor(normalized / 60);
+    const minutes = normalized % 60;
     return `${hours.toString().padStart(2, '0')}:${minutes.toString().padStart(2, '0')}`;
 }
 
