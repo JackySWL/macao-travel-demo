@@ -1,13 +1,14 @@
 <!DOCTYPE html>
-<html lang="zh-Hant">
+<html lang="zh">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>澳門AI旅遊規劃 | Macao AI Travel Planner</title>
+    <title>Macao AI Travel Planner | 澳门AI旅游规划</title>
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="styles-new.css">
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Maps -->
 </head>
 <body>
     <div class="app-container">
@@ -15,683 +16,661 @@
         <header class="header">
             <div class="logo">
                 <i class="fas fa-map-marked-alt"></i>
-                <span>澳門AI旅遊規劃</span>
+                <span data-i18n="appName">澳门AI旅游规划</span>
             </div>
             <div class="header-right">
                 <div class="trip-info">
-                    <span class="trip-dates">2026年2月4日 - 2月6日</span>
+                    <span class="trip-dates">2026.02.04 - 02.06</span>
                     <span class="trip-days">3天2晚</span>
                 </div>
                 <div class="lang-switcher">
-                    <button class="lang-btn active">繁中</button>
-                    <button class="lang-btn">简中</button>
-                    <button class="lang-btn">EN</button>
-                    <button class="lang-btn">PT</button>
+                    <button class="lang-btn active" data-lang="zh">中文</button>
+                    <button class="lang-btn" data-lang="en">EN</button>
+                    <button class="lang-btn" data-lang="pt">PT</button>
                 </div>
             </div>
         </header>
 
         <div class="main-content">
-            <!-- Left Panel - Info Column -->
+            <!-- Left Panel -->
             <aside class="left-panel">
-                <!-- Main Navigation -->
-                <nav class="main-nav">
-                    <button class="nav-item active" data-tab="attractions">
-                        <i class="fas fa-landmark"></i>
-                        <span>景點</span>
+                <!-- Navigation Tabs -->
+                <nav class="nav-tabs">
+                    <button class="nav-tab active" data-tab="overview" data-i18n="tabOverview">
+                        <i class="fas fa-th-large"></i>
+                        <span>概览</span>
                     </button>
-                    <button class="nav-item" data-tab="food">
-                        <i class="fas fa-utensils"></i>
-                        <span>美食</span>
-                    </button>
-                    <button class="nav-item" data-tab="hotels">
-                        <i class="fas fa-hotel"></i>
-                        <span>住宿</span>
-                    </button>
-                    <button class="nav-item" data-tab="events">
+                    <button class="nav-tab" data-tab="events" data-i18n="tabEvents">
                         <i class="fas fa-calendar-star"></i>
-                        <span>活動</span>
+                        <span>活动</span>
                     </button>
-                    <button class="nav-item" data-tab="transport">
-                        <i class="fas fa-bus"></i>
-                        <span>交通</span>
-                    </button>
-                    <button class="nav-item" data-tab="budget">
+                    <button class="nav-tab" data-tab="budget" data-i18n="tabBudget">
                         <i class="fas fa-wallet"></i>
-                        <span>預算</span>
+                        <span>预算</span>
                     </button>
-                    <button class="nav-item" data-tab="checklist">
-                        <i class="fas fa-suitcase"></i>
-                        <span>行李</span>
+                    <button class="nav-tab" data-tab="routes" data-i18n="tabRoutes">
+                        <i class="fas fa-route"></i>
+                        <span>路线</span>
+                    </button>
+                    <button class="nav-tab" data-tab="attractions" data-i18n="tabAttractions">
+                        <i class="fas fa-landmark"></i>
+                        <span>景点</span>
+                    </button>
+                    <button class="nav-tab" data-tab="restaurants" data-i18n="tabRestaurants">
+                        <i class="fas fa-utensils"></i>
+                        <span>餐厅</span>
                     </button>
                 </nav>
 
                 <!-- Content Area -->
                 <div class="content-area">
-                    
-                    <!-- 景點 Tab -->
-                    <div class="tab-content active" id="attractions-tab">
-                        <div class="section-header">
-                            <h3><i class="fas fa-landmark"></i> 景點推薦</h3>
-                            <div class="crowd-indicator">
-                                <span class="crowd-dot low"></span>
-                                <span>即時擁擠度：舒適</span>
-                            </div>
-                        </div>
-                        
-                        <!-- 分類篩選 -->
-                        <div class="filter-chips">
-                            <button class="chip active">全部</button>
-                            <button class="chip"><i class="fas fa-monument"></i> 世遺古蹟</button>
-                            <button class="chip"><i class="fas fa-dice"></i> 娛樂度假村</button>
-                            <button class="chip"><i class="fas fa-university"></i> 博物館</button>
-                            <button class="chip"><i class="fas fa-tree"></i> 自然景觀</button>
-                        </div>
-
-                        <!-- 快速標籤 -->
-                        <div class="quick-tags">
-                            <span class="tag free"><i class="fas fa-ticket-alt"></i> 免費入場</span>
-                            <span class="tag photo"><i class="fas fa-camera"></i> 影相打卡</span>
-                            <span class="tag night"><i class="fas fa-moon"></i> 夜間開放</span>
-                        </div>
-
-                        <!-- 景點列表 -->
-                        <div class="info-cards">
-                            <div class="info-card attraction-card">
-                                <div class="card-image">
-                                    <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=400&h=300&fit=crop" alt="大三巴">
-                                    <div class="crowd-badge high">擁擠</div>
-                                    <div class="status-badge open">正在營業</div>
+                    <!-- Overview Tab -->
+                    <div class="tab-content active" id="overview-tab">
+                        <!-- 时间选择器 -->
+                        <div class="overview-section">
+                            <h3><i class="fas fa-calendar-alt"></i> 旅行时间</h3>
+                            
+                            <!-- 阶段1：月份选择 -->
+                            <div class="time-selector-stage">
+                                <label class="stage-label">选择月份</label>
+                                <div class="month-selector">
+                                    <button class="month-btn" data-month="1">1月</button>
+                                    <button class="month-btn active" data-month="2">2月</button>
+                                    <button class="month-btn" data-month="3">3月</button>
+                                    <button class="month-btn" data-month="4">4月</button>
+                                    <button class="month-btn" data-month="5">5月</button>
+                                    <button class="month-btn" data-month="6">6月</button>
+                                    <button class="month-btn" data-month="7">7月</button>
+                                    <button class="month-btn" data-month="8">8月</button>
+                                    <button class="month-btn" data-month="9">9月</button>
+                                    <button class="month-btn" data-month="10">10月</button>
+                                    <button class="month-btn" data-month="11">11月</button>
+                                    <button class="month-btn" data-month="12">12月</button>
                                 </div>
-                                <div class="card-body">
-                                    <h4>大三巴牌坊</h4>
-                                    <p class="card-desc">聖保祿大教堂遺址，澳門最著名的地標建築，被列入世界文化遺產。</p>
-                                    
-                                    <!-- 擁擠度預測 -->
-                                    <div class="crowd-prediction">
-                                        <div class="prediction-title">
-                                            <i class="fas fa-chart-line"></i> AI擁擠度預測
-                                        </div>
-                                        <div class="prediction-bars">
-                                            <div class="p-bar">
-                                                <span>現在</span>
-                                                <div class="bar"><div style="width: 85%; background: #ef4444;"></div></div>
-                                            </div>
-                                            <div class="p-bar">
-                                                <span>14:00</span>
-                                                <div class="bar"><div style="width: 65%; background: #f59e0b;"></div></div>
-                                            </div>
-                                            <div class="p-bar">
-                                                <span>17:00</span>
-                                                <div class="bar"><div style="width: 40%; background: #10b981;"></div></div>
-                                            </div>
-                                        </div>
-                                        <p class="prediction-note">基於歷史數據、天氣晴朗、週末因素分析</p>
-                                    </div>
-
-                                    <div class="card-meta">
-                                        <span><i class="fas fa-clock"></i> 09:00-18:00</span>
-                                        <span><i class="fas fa-bus"></i> 3, 3X, 10, 10A</span>
-                                    </div>
-                                    
-                                    <div class="card-tags">
-                                        <span class="tag">世遺古蹟</span>
-                                        <span class="tag">免費</span>
-                                        <span class="tag">打卡熱點</span>
-                                    </div>
-                                    
-                                    <button class="btn-add-plan">
-                                        <i class="fas fa-plus"></i> 加入行程
-                                    </button>
-                                </div>
-                            </div>
-
-                            <div class="info-card attraction-card">
-                                <div class="card-image">
-                                    <img src="https://images.unsplash.com/photo-1569949381669-ecf31ae8e613?w=400&h=300&fit=crop" alt="威尼斯人">
-                                    <div class="crowd-badge medium">適中</div>
-                                    <div class="status-badge open">24小時開放</div>
-                                </div>
-                                <div class="card-body">
-                                    <h4>威尼斯人度假村</h4>
-                                    <p class="card-desc">集酒店、購物、娛樂於一體的綜合度假村，室內運河與貢多拉船是亮點。</p>
-                                    
-                                    <div class="crowd-prediction">
-                                        <div class="prediction-title">
-                                            <i class="fas fa-chart-line"></i> AI擁擠度預測
-                                        </div>
-                                        <div class="prediction-bars">
-                                            <div class="p-bar">
-                                                <span>現在</span>
-                                                <div class="bar"><div style="width: 60%; background: #f59e0b;"></div></div>
-                                            </div>
-                                            <div class="p-bar">
-                                                <span>20:00</span>
-                                                <div class="bar"><div style="width: 80%; background: #ef4444;"></div></div>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <div class="card-meta">
-                                        <span><i class="fas fa-clock"></i> 24小時</span>
-                                        <span><i class="fas fa-bus"></i> 免費穿梭巴士</span>
-                                    </div>
-                                    
-                                    <div class="card-tags">
-                                        <span class="tag">娛樂度假村</span>
-                                        <span class="tag">購物</span>
-                                        <span class="tag">夜間開放</span>
-                                    </div>
-                                    
-                                    <button class="btn-add-plan">
-                                        <i class="fas fa-plus"></i> 加入行程
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- 美食 Tab -->
-                    <div class="tab-content" id="food-tab">
-                        <div class="section-header">
-                            <h3><i class="fas fa-utensils"></i> 澳門美食</h3>
-                        </div>
-                        
-                        <!-- 分類 -->
-                        <div class="filter-chips">
-                            <button class="chip active">全部</button>
-                            <button class="chip">葡國菜</button>
-                            <button class="chip">土生葡菜</button>
-                            <button class="chip">粵菜</button>
-                            <button class="chip">街頭小吃</button>
-                        </div>
-
-                        <div class="info-cards">
-                            <div class="info-card food-card">
-                                <div class="card-image">
-                                    <img src="https://images.unsplash.com/photo-1563245372-f21724e3856d?w=400&h=300&fit=crop" alt="黃枝記">
-                                    <div class="rating-badge">4.5★</div>
-                                </div>
-                                <div class="card-body">
-                                    <div class="card-header-row">
-                                        <h4>黃枝記粥麵專家</h4>
-                                        <span class="price-tag">$$</span>
-                                    </div>
-                                    <p class="card-desc">70年老字號，以鮮蝦雲吞麵聞名，麵條彈牙有勁。</p>
-                                    
-                                    <!-- 招牌菜 -->
-                                    <div class="signature-dishes">
-                                        <div class="dish-tag recommended">
-                                            <i class="fas fa-thumbs-up"></i>
-                                            <span>招牌：鮮蝦雲吞麵</span>
-                                        </div>
-                                        <div class="dish-tag local">
-                                            <i class="fas fa-user-friends"></i>
-                                            <span>本地人常點：蝦子撈麵</span>
-                                        </div>
-                                    </div>
-
-                                    <!-- 智能菜單解讀入口 -->
-                                    <button class="btn-menu-ai" onclick="showMenuAI('wong-chi-kei')">
-                                        <i class="fas fa-camera"></i> AI掃描菜單
-                                        <span class="btn-hint">拍照即可獲取推薦</span>
-                                    </button>
-
-                                    <div class="card-meta">
-                                        <span><i class="fas fa-map-marker-alt"></i> 議事亭前地</span>
-                                        <span><i class="fas fa-clock"></i> 07:00-23:00</span>
-                                    </div>
-                                    
-                                    <div class="card-footer">
-                                        <span class="avg-price">人均 MOP 50-80</span>
-                                        <button class="btn-reserve" onclick="openReserveModal('黃枝記粥麵專家')">
-                                            <i class="fas fa-phone-alt"></i> AI訂位
-                                        </button>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="info-card food-card">
-                                <div class="card-image">
-                                    <img src="https://images.unsplash.com/photo-1551024601-bec78aea704b?w=400&h=300&fit=crop" alt="安德魯">
-                                    <div class="rating-badge">4.7★</div>
-                                </div>
-                                <div class="card-body">
-                                    <div class="card-header-row">
-                                        <h4>安德魯餅店</h4>
-                                        <span class="price-tag">$</span>
-                                    </div>
-                                    <p class="card-desc">葡式蛋撻創始店，外皮酥脆，蛋馅香濃。</p>
-                                    
-                                    <div class="signature-dishes">
-                                        <div class="dish-tag must-try">
-                                            <i class="fas fa-crown"></i>
-                                            <span>必吃：葡式蛋撻</span>
-                                        </div>
-                                        <div class="dish-tag">
-                                            <i class="fas fa-info-circle"></i>
-                                            <span>搭配推薦：蛋撻 + 凍檸茶</span>
-                                        </div>
-                                    </div>
-
-                                    <button class="btn-menu-ai" onclick="showMenuAI('lord-stows')">
-                                        <i class="fas fa-camera"></i> AI掃描菜單
-                                    </button>
-
-                                    <div class="card-meta">
-                                        <span><i class="fas fa-map-marker-alt"></i> 官也街</span>
-                                        <span><i class="fas fa-clock"></i> 10:00-22:00</span>
-                                    </div>
-                                    
-                                    <div class="card-footer">
-                                        <span class="avg-price">人均 MOP 20-40</span>
-                                        <button class="btn-add-trip">
-                                            <i class="fas fa-plus"></i> 加入行程
-                                        </button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- 住宿 Tab -->
-                    <div class="tab-content" id="hotels-tab">
-                        <div class="section-header">
-                            <h3><i class="fas fa-hotel"></i> 住宿推薦</h3>
-                        </div>
-                        
-                        <!-- 類型分類 -->
-                        <div class="filter-section">
-                            <label>類型</label>
-                            <div class="filter-chips">
-                                <button class="chip active">全部</button>
-                                <button class="chip"><i class="fas fa-dice"></i> 綜合度假村</button>
-                                <button class="chip"><i class="fas fa-gem"></i> 豪華酒店</button>
-                                <button class="chip"><i class="fas fa-palette"></i> 精品酒店</button>
-                                <button class="chip"><i class="fas fa-bed"></i> 經濟型</button>
-                                <button class="chip"><i class="fas fa-landmark"></i> 歷史建築</button>
-                            </div>
-                        </div>
-
-                        <!-- 區域分類 -->
-                        <div class="filter-section">
-                            <label>區域</label>
-                            <div class="filter-chips">
-                                <button class="chip active">全部區域</button>
-                                <button class="chip">路氹城</button>
-                                <button class="chip">澳門半島</button>
-                                <button class="chip">氹仔舊城區</button>
-                            </div>
-                        </div>
-
-                        <div class="info-cards">
-                            <div class="info-card hotel-card">
-                                <div class="card-image">
-                                    <img src="https://images.unsplash.com/photo-1566073771259-6a8506099945?w=400&h=300&fit=crop" alt="威尼斯人">
-                                    <div class="hotel-stars">5★</div>
-                                </div>
-                                <div class="card-body">
-                                    <h4>澳門威尼斯人</h4>
-                                    <p class="card-desc">世界級綜合度假村，擁有3000間套房，室內運河購物中心。</p>
-                                    
-                                    <div class="hotel-features">
-                                        <div class="feature-item">
-                                            <i class="fas fa-shuttle-van"></i>
-                                            <span>免費接駁：關閘/機場/碼頭</span>
-                                        </div>
-                                        <div class="feature-item">
-                                            <i class="fas fa-suitcase"></i>
-                                            <span>行李寄存：免費（退房後當天）</span>
-                                        </div>
-                                        <div class="feature-item">
-                                            <i class="fas fa-swimming-pool"></i>
-                                            <span>泳池、健身中心、娛樂場</span>
-                                        </div>
-                                    </div>
-
-                                    <div class="card-meta">
-                                        <span><i class="fas fa-map-marker-alt"></i> 路氹城</span>
-                                        <span><i class="fas fa-tag"></i> MOP 1,200起/晚</span>
-                                    </div>
-                                    
-                                    <button class="btn-check-price">
-                                        <i class="fas fa-external-link-alt"></i> 查詢價格與預訂
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- 活動 Tab -->
-                    <div class="tab-content" id="events-tab">
-                        <div class="section-header">
-                            <h3><i class="fas fa-calendar-star"></i> 本月活動</h3>
-                            <span class="section-subtitle">2026年2月精選</span>
-                        </div>
-                        
-                        <div class="filter-chips">
-                            <button class="chip active">全部</button>
-                            <button class="chip">節慶盛事</button>
-                            <button class="chip">表演展覽</button>
-                            <button class="chip">工作坊體驗</button>
-                        </div>
-
-                        <div class="info-cards">
-                            <div class="info-card event-card-large">
-                                <div class="card-image">
-                                    <img src="https://images.unsplash.com/photo-1467810563316-b5476525c0f9?w=400&h=250&fit=crop" alt="煙花">
-                                    <div class="event-date-large">
-                                        <span class="day">06</span>
-                                        <span class="month">2月</span>
-                                    </div>
-                                </div>
-                                <div class="card-body">
-                                    <div class="event-tags-large">
-                                        <span class="tag festival">節慶</span>
-                                        <span class="tag free">免費</span>
-                                    </div>
-                                    <h4>澳門春節煙花匯演</h4>
-                                    <p class="card-desc">在旅遊塔對開海面舉行，璀璨煙花照亮澳門夜空，是春節期間不可錯過的視覺盛宴。</p>
-                                    
-                                    <div class="event-details">
-                                        <div class="detail-row">
-                                            <i class="fas fa-clock"></i>
-                                            <span>時間：20:00 - 20:25</span>
-                                        </div>
-                                        <div class="detail-row">
-                                            <i class="fas fa-map-marker-alt"></i>
-                                            <span>地點：旅遊塔對開海面</span>
-                                        </div>
-                                        <div class="detail-row">
-                                            <i class="fas fa-ticket-alt"></i>
-                                            <span>門票：免費</span>
-                                        </div>
-                                        <div class="detail-row">
-                                            <i class="fas fa-eye"></i>
-                                            <span>最佳觀賞點：南灣湖景大馬路、主教山</span>
-                                        </div>
-                                    </div>
-
-                                    <div class="event-actions">
-                                        <a href="#" class="btn-link">
-                                            <i class="fas fa-globe"></i> 官方網站
-                                        </a>
-                                        <button class="btn-add-plan">
-                                            <i class="fas fa-plus"></i> 加入行程
-                                        </button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- 交通 Tab -->
-                    <div class="tab-content" id="transport-tab">
-                        <div class="section-header">
-                            <h3><i class="fas fa-bus"></i> 交通指南</h3>
-                        </div>
-
-                        <!-- 跨境交通 -->
-                        <div class="transport-section">
-                            <h4><i class="fas fa-plane"></i> 跨境交通</h4>
-                            <div class="transport-grid">
-                                <div class="transport-item-card">
-                                    <i class="fas fa-plane-arrival"></i>
-                                    <span>澳門國際機場</span>
-                                    <small>直通航班</small>
-                                </div>
-                                <div class="transport-item-card">
-                                    <i class="fas fa-ship"></i>
-                                    <span>氹仔客運碼頭</span>
-                                    <small>香港/深圳</small>
-                                </div>
-                                <div class="transport-item-card">
-                                    <i class="fas fa-archway"></i>
-                                    <span>關閘口岸</span>
-                                    <small>珠海/拱北</small>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- 市內交通 -->
-                        <div class="transport-section">
-                            <h4><i class="fas fa-bus"></i> 市內交通</h4>
-                            <div class="transport-list">
-                                <div class="transport-row">
-                                    <div class="t-icon bus"><i class="fas fa-bus"></i></div>
-                                    <div class="t-info">
-                                        <span class="t-name>巴士</span>
-                                        <span class="t-detail">路線覆蓋全澳，票價 MOP 6</span>
-                                    </div>
-                                    <div class="t-payment">
-                                        <span>澳門通 / 現金</span>
-                                    </div>
-                                </div>
-                                <div class="transport-row">
-                                    <div class="t-icon taxi"><i class="fas fa-taxi"></i></div>
-                                    <div class="t-info">
-                                        <span class="t-name">的士</span>
-                                        <span class="t-detail">首公里 MOP 19，建議用「電召的士」App</span>
-                                    </div>
-                                    <div class="t-payment">
-                                        <span>現金 / 電子支付</span>
-                                    </div>
-                                </div>
-                                <div class="transport-row">
-                                    <div class="t-icon shuttle"><i class="fas fa-shuttle-van"></i></div>
-                                    <div class="t-info">
-                                        <span class="t-name">酒店穿梭巴士</span>
-                                        <span class="t-detail">免費往返關閘/機場/碼頭/景點</span>
-                                    </div>
-                                    <div class="t-payment">
-                                        <span>免費</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- 實用資訊 -->
-                        <div class="transport-section">
-                            <h4><i class="fas fa-info-circle"></i> 實用資訊</h4>
-                            <div class="info-boxes">
-                                <div class="info-box">
-                                    <i class="fas fa-passport"></i>
-                                    <h5>出入境與簽證</h5>
-                                    <p>持中國護照可免簽入境7天，港澳通行證需有效簽注。</p>
-                                </div>
-                                <div class="info-box">
-                                    <i class="fas fa-money-bill-wave"></i>
-                                    <h5>貨幣與消費</h5>
-                                    <p>澳門幣(MOP)，與港幣1:1通用。電子支付普及：MPay、支付寶、微信。</p>
-                                </div>
-                                <div class="info-box">
-                                    <i class="fas fa-mobile-alt"></i>
-                                    <h5>推薦App</h5>
-                                    <p>「巴士報站」- 實時巴士到站資訊</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- 預算 Tab -->
-                    <div class="tab-content" id="budget-tab">
-                        <div class="section-header">
-                            <h3><i class="fas fa-wallet"></i> 預算與分賬</h3>
-                        </div>
-
-                        <!-- 多人分賬 -->
-                        <div class="split-bill-section">
-                            <div class="section-subheader">
-                                <h4><i class="fas fa-users"></i> 多人分賬</h4>
-                                <button class="btn-invite">
-                                    <i class="fas fa-user-plus"></i> 邀請同行者
-                                </button>
                             </div>
                             
-                            <div class="participants">
-                                <div class="participant me">
-                                    <div class="p-avatar">我</div>
-                                    <span class="p-name">我</span>
-                                    <span class="p-amount">MOP 1,200</span>
+                            <!-- 阶段2：具体日期（可选） -->
+                            <div class="time-selector-stage">
+                                <div class="stage-header">
+                                    <label class="stage-label">具体日期</label>
+                                    <label class="toggle-date">
+                                        <input type="checkbox" id="enable-date" checked>
+                                        <span class="toggle-slider"></span>
+                                        <span class="toggle-text">已确定</span>
+                                    </label>
                                 </div>
-                                <div class="participant">
-                                    <div class="p-avatar">A</div>
-                                    <span class="p-name">Alice</span>
-                                    <span class="p-amount">MOP 980</span>
-                                </div>
-                                <div class="participant">
-                                    <div class="p-avatar">B</div>
-                                    <span class="p-name">Bob</span>
-                                    <span class="p-amount">MOP 1,050</span>
-                                </div>
-                            </div>
-
-                            <button class="btn-calculate-split">
-                                <i class="fas fa-calculator"></i> 計算分攤
-                            </button>
-                        </div>
-
-                        <!-- 貨幣兌換 -->
-                        <div class="currency-section">
-                            <h4><i class="fas fa-exchange-alt"></i> 貨幣兌換</h4>
-                            <div class="currency-list">
-                                <div class="currency-item">
-                                    <span class="curr-name">澳門幣 MOP</span>
-                                    <span class="curr-rate">1.00</span>
-                                </div>
-                                <div class="currency-item">
-                                    <span class="curr-name">港幣 HKD</span>
-                                    <span class="curr-rate">1.03</span>
-                                </div>
-                                <div class="currency-item">
-                                    <span class="curr-name">人民幣 CNY</span>
-                                    <span class="curr-rate">1.12</span>
-                                </div>
-                                <div class="currency-item">
-                                    <span class="curr-name">美元 USD</span>
-                                    <span class="curr-rate">8.08</span>
+                                <div class="date-range-picker" id="date-range-section">
+                                    <div class="date-input-group">
+                                        <div class="date-field">
+                                            <label>出发</label>
+                                            <input type="date" id="start-date" value="2026-02-04">
+                                        </div>
+                                        <div class="date-separator">
+                                            <i class="fas fa-arrow-right"></i>
+                                        </div>
+                                        <div class="date-field">
+                                            <label>返回</label>
+                                            <input type="date" id="end-date" value="2026-02-06">
+                                        </div>
+                                    </div>
+                                    <div class="trip-duration-badge">
+                                        <i class="fas fa-moon"></i>
+                                        <span id="trip-nights">2晚</span>
+                                        <span id="trip-days-count">3天</span>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-
-                        <!-- 收支紀錄 -->
-                        <div class="expense-section">
-                            <h4><i class="fas fa-receipt"></i> 收支紀錄</h4>
-                            <div class="expense-list">
-                                <div class="expense-item">
-                                    <div class="e-icon food"><i class="fas fa-utensils"></i></div>
-                                    <div class="e-info">
-                                        <span class="e-name">黃枝記午餐</span>
-                                        <span class="e-date">2月4日</span>
+                        
+                        <!-- 快速统计 -->
+                        <div class="overview-section">
+                            <h3 data-i18n="myTrip">行程概览</h3>
+                            <div class="overview-stats">
+                                <div class="stat-card">
+                                    <i class="fas fa-map-marker-alt"></i>
+                                    <div>
+                                        <span class="stat-value">8</span>
+                                        <span class="stat-label" data-i18n="attractions">景点</span>
                                     </div>
-                                    <span class="e-amount">MOP 156</span>
                                 </div>
-                                <div class="expense-item">
-                                    <div class="e-icon ticket"><i class="fas fa-ticket-alt"></i></div>
-                                    <div class="e-info">
-                                        <span class="e-name">旅遊塔門票</span>
-                                        <span class="e-date">2月4日</span>
+                                <div class="stat-card">
+                                    <i class="fas fa-walking"></i>
+                                    <div>
+                                        <span class="stat-value">12km</span>
+                                        <span class="stat-label" data-i18n="walking">步行</span>
                                     </div>
-                                    <span class="e-amount">MOP 195</span>
+                                </div>
+                                <div class="stat-card">
+                                    <i class="fas fa-clock"></i>
+                                    <div>
+                                        <span class="stat-value">8h</span>
+                                        <span class="stat-label" data-i18n="duration">时长</span>
+                                    </div>
                                 </div>
                             </div>
-                            <button class="btn-add-expense">
-                                <i class="fas fa-plus"></i> 記錄新支出
-                            </button>
+                        </div>
+                        
+                        <div class="overview-section">
+                            <h3 data-i18n="budgetSummary">预算概览</h3>
+                            <div class="budget-mini">
+                                <div class="budget-bar">
+                                    <div class="budget-progress" style="width: 24%"></div>
+                                </div>
+                                <div class="budget-text-mini">
+                                    <span>MOP 1,200 / 5,000</span>
+                                    <span class="budget-percent">24%</span>
+                                </div>
+                            </div>
                         </div>
                     </div>
 
-                    <!-- 行李 Tab -->
-                    <div class="tab-content" id="checklist-tab">
-                        <div class="section-header">
-                            <h3><i class="fas fa-suitcase"></i> 行李清單</h3>
-                            <div class="checklist-progress">
-                                <div class="progress-bar">
-                                    <div style="width: 65%;"></div>
+                    <!-- Events Tab -->
+                    <div class="tab-content" id="events-tab">
+                        <div class="events-container">
+                            <div class="events-header">
+                                <h3><i class="fas fa-star"></i> 本月精选活动</h3>
+                                <span class="events-subtitle" id="events-date-range">2026年2月</span>
+                            </div>
+                            
+                            <!-- 活动过滤器 -->
+                            <div class="events-filter">
+                                <button class="event-filter-btn active" data-filter="all">全部</button>
+                                <button class="event-filter-btn" data-filter="festival">节庆</button>
+                                <button class="event-filter-btn" data-filter="culture">文化</button>
+                                <button class="event-filter-btn" data-filter="food">美食</button>
+                                <button class="event-filter-btn" data-filter="music">音乐</button>
+                            </div>
+                            
+                            <!-- 活动列表 -->
+                            <div class="events-list">
+                                <div class="event-card" data-type="festival" data-date="2026-02-06">
+                                    <div class="event-image">
+                                        <img src="https://images.unsplash.com/photo-1467810563316-b5476525c0f9?w=400&h=250&fit=crop" alt="春节">
+                                        <span class="event-date-badge">2月6日-8日</span>
+                                    </div>
+                                    <div class="event-content">
+                                        <div class="event-tags">
+                                            <span class="event-tag festival">节庆</span>
+                                            <span class="event-tag free">免费</span>
+                                        </div>
+                                        <h4 class="event-title">澳门春节烟花汇演</h4>
+                                        <p class="event-desc">在旅游塔对开海面举行，璀璨烟花照亮澳门夜空，是春节期间不可错过的视觉盛宴。</p>
+                                        <div class="event-footer">
+                                            <span class="event-location"><i class="fas fa-map-marker-alt"></i> 旅游塔对开海面</span>
+                                            <button class="event-add-btn" data-event="fireworks">
+                                                <i class="fas fa-plus"></i> 添加到行程
+                                            </button>
+                                        </div>
+                                    </div>
                                 </div>
-                                <span>13/20 已完成</span>
+                                
+                                <div class="event-card" data-type="culture" data-date="2026-02-05">
+                                    <div class="event-image">
+                                        <img src="https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=400&h=250&fit=crop" alt="舞狮">
+                                        <span class="event-date-badge">2月5日</span>
+                                    </div>
+                                    <div class="event-content">
+                                        <div class="event-tags">
+                                            <span class="event-tag culture">文化</span>
+                                            <span class="event-tag free">免费</span>
+                                        </div>
+                                        <h4 class="event-title">传统舞狮表演</h4>
+                                        <p class="event-desc">在大三巴牌坊前举行传统舞狮采青表演，感受浓厚的春节氛围。</p>
+                                        <div class="event-footer">
+                                            <span class="event-location"><i class="fas fa-map-marker-alt"></i> 大三巴牌坊</span>
+                                            <button class="event-add-btn" data-event="lion-dance">
+                                                <i class="fas fa-plus"></i> 添加到行程
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div class="event-card" data-type="food" data-date="2026-02-04">
+                                    <div class="event-image">
+                                        <img src="https://images.unsplash.com/photo-1555939594-58d7cb561ad1?w=400&h=250&fit=crop" alt="美食节">
+                                        <span class="event-date-badge">2月4日-7日</span>
+                                    </div>
+                                    <div class="event-content">
+                                        <div class="event-tags">
+                                            <span class="event-tag food">美食</span>
+                                            <span class="event-tag paid">付费</span>
+                                        </div>
+                                        <h4 class="event-title">塔石广场新春美食节</h4>
+                                        <p class="event-desc">汇聚澳门本地及国际美食摊位，还有传统年宵市场，品尝地道小吃。</p>
+                                        <div class="event-footer">
+                                            <span class="event-location"><i class="fas fa-map-marker-alt"></i> 塔石广场</span>
+                                            <button class="event-add-btn" data-event="food-festival">
+                                                <i class="fas fa-plus"></i> 添加到行程
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div class="event-card" data-type="music" data-date="2026-02-06">
+                                    <div class="event-image">
+                                        <img src="https://images.unsplash.com/photo-1470229722913-7c0e2dbbafd3?w=400&h=250&fit=crop" alt="音乐会">
+                                        <span class="event-date-badge">2月6日 20:00</span>
+                                    </div>
+                                    <div class="event-content">
+                                        <div class="event-tags">
+                                            <span class="event-tag music">音乐</span>
+                                            <span class="event-tag paid">付费</span>
+                                        </div>
+                                        <h4 class="event-title">威尼斯人新春音乐会</h4>
+                                        <p class="event-desc">著名交响乐团演奏中西合璧的新春曲目，在金光综艺馆举行。</p>
+                                        <div class="event-footer">
+                                            <span class="event-location"><i class="fas fa-map-marker-alt"></i> 威尼斯人金光综艺馆</span>
+                                            <button class="event-add-btn" data-event="concert">
+                                                <i class="fas fa-plus"></i> 添加到行程
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
-
-                        <div class="checklist-categories">
-                            <div class="check-category">
-                                <h4><i class="fas fa-id-card"></i> 證件與財務</h4>
-                                <label class="check-item">
-                                    <input type="checkbox" checked>
-                                    <span>港澳通行證/護照</span>
-                                </label>
-                                <label class="check-item">
-                                    <input type="checkbox" checked>
-                                    <span>身份證</span>
-                                </label>
-                                <label class="check-item">
-                                    <input type="checkbox">
-                                    <span>現金（港幣/澳門幣）</span>
-                                </label>
-                                <label class="check-item">
-                                    <input type="checkbox" checked>
-                                    <span>銀行卡</span>
-                                </label>
-                            </div>
-
-                            <div class="check-category">
-                                <h4><i class="fas fa-tshirt"></i> 衣物</h4>
-                                <label class="check-item">
-                                    <input type="checkbox" checked>
-                                    <span>舒適步行鞋</span>
-                                </label>
-                                <label class="check-item">
-                                    <input type="checkbox" checked>
-                                    <span>輕便外套（室內冷氣）</span>
-                                </label>
-                                <label class="check-item">
-                                    <input type="checkbox">
-                                    <span>雨具</span>
-                                </label>
-                            </div>
-
-                            <div class="check-category">
-                                <h4><i class="fas fa-mobile-alt"></i> 電子產品</h4>
-                                <label class="check-item">
-                                    <input type="checkbox" checked>
-                                    <span>充電寶</span>
-                                </label>
-                                <label class="check-item">
-                                    <input type="checkbox" checked>
-                                    <span>轉換插頭（英標）</span>
-                                </label>
-                                <label class="check-item">
-                                    <input type="checkbox">
-                                    <span>相機</span>
-                                </label>
-                            </div>
-
-                            <div class="check-category">
-                                <h4><i class="fas fa-medkit"></i> 其他</h4>
-                                <label class="check-item">
-                                    <input type="checkbox" checked>
-                                    <span>防曬用品</span>
-                                </label>
-                                <label class="check-item">
-                                    <input type="checkbox" checked>
-                                    <span>常用藥品</span>
-                                </label>
-                                <label class="check-item">
-                                    <input type="checkbox">
-                                    <span>水杯</span>
-                                </label>
-                            </div>
-                        </div>
-
-                        <button class="btn-add-item">
-                            <i class="fas fa-plus"></i> 添加物品
-                        </button>
                     </div>
 
+                    <!-- Budget Tab -->
+                    <div class="tab-content" id="budget-tab">
+                        <div class="budget-detail">
+                            <h3 data-i18n="budgetTracker">智能预算追踪</h3>
+                            
+                            <div class="budget-ring-large">
+                                <svg viewBox="0 0 120 120">
+                                    <defs>
+                                        <linearGradient id="budgetGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                                            <stop offset="0%" style="stop-color:#4a9eff"/>
+                                            <stop offset="100%" style="stop-color:#00c6ff"/>
+                                        </linearGradient>
+                                    </defs>
+                                    <circle class="ring-bg" cx="60" cy="60" r="50"/>
+                                    <circle class="ring-progress" cx="60" cy="60" r="50" style="--progress: 24"/>
+                                </svg>
+                                <div class="budget-center">
+                                    <span class="budget-percent-large">24%</span>
+                                    <span class="budget-label" data-i18n="used">已使用</span>
+                                </div>
+                            </div>
+
+                            <div class="budget-breakdown">
+                                <h4 data-i18n="spendingBreakdown">支出明细</h4>
+                                <div class="budget-item">
+                                    <div class="budget-icon" style="background: #e3f2fd;">
+                                        <i class="fas fa-utensils" style="color: #2196f3;"></i>
+                                    </div>
+                                    <div class="budget-info">
+                                        <span class="budget-name" data-i18n="food">餐饮</span>
+                                        <span class="budget-amount">MOP 450</span>
+                                    </div>
+                                    <div class="budget-bar-small">
+                                        <div class="budget-fill" style="width: 38%; background: #2196f3;"></div>
+                                    </div>
+                                </div>
+                                <div class="budget-item">
+                                    <div class="budget-icon" style="background: #fce4ec;">
+                                        <i class="fas fa-ticket-alt" style="color: #e91e63;"></i>
+                                    </div>
+                                    <div class="budget-info">
+                                        <span class="budget-name" data-i18n="tickets">门票</span>
+                                        <span class="budget-amount">MOP 300</span>
+                                    </div>
+                                    <div class="budget-bar-small">
+                                        <div class="budget-fill" style="width: 25%; background: #e91e63;"></div>
+                                    </div>
+                                </div>
+                                <div class="budget-item">
+                                    <div class="budget-icon" style="background: #f3e5f5;">
+                                        <i class="fas fa-bus" style="color: #9c27b0;"></i>
+                                    </div>
+                                    <div class="budget-info">
+                                        <span class="budget-name" data-i18n="transport">交通</span>
+                                        <span class="budget-amount">MOP 250</span>
+                                    </div>
+                                    <div class="budget-bar-small">
+                                        <div class="budget-fill" style="width: 21%; background: #9c27b0;"></div>
+                                    </div>
+                                </div>
+                                <div class="budget-item">
+                                    <div class="budget-icon" style="background: #e8f5e9;">
+                                        <i class="fas fa-shopping-bag" style="color: #4caf50;"></i>
+                                    </div>
+                                    <div class="budget-info">
+                                        <span class="budget-name" data-i18n="shopping">购物</span>
+                                        <span class="budget-amount">MOP 200</span>
+                                    </div>
+                                    <div class="budget-bar-small">
+                                        <div class="budget-fill" style="width: 16%; background: #4caf50;"></div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="budget-forecast-box">
+                                <i class="fas fa-chart-line"></i>
+                                <div>
+                                    <span data-i18n="dailyForecast">今日预计支出</span>
+                                    <strong>MOP 850</strong>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Routes Tab -->
+                    <div class="tab-content" id="routes-tab">
+                        <div class="routes-container">
+                            <h3 data-i18n="recommendedRoutes">推荐路线</h3>
+                            <p class="routes-hint" data-i18n="dragToTimeline">拖动路线到时间轴添加</p>
+                            
+                            <div class="route-templates">
+                                <div class="route-template" draggable="true" data-route="historic">
+                                    <div class="route-header">
+                                        <div class="route-icon-large" style="background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);">
+                                            <i class="fas fa-landmark"></i>
+                                        </div>
+                                        <div class="route-title">
+                                            <h4 data-i18n="historicRoute">历史城区精华游</h4>
+                                            <span class="route-time"><i class="fas fa-clock"></i> 4-5小时</span>
+                                        </div>
+                                    </div>
+                                    <div class="route-stops">
+                                        <span class="stop">大三巴</span>
+                                        <i class="fas fa-arrow-right"></i>
+                                        <span class="stop">议事亭前地</span>
+                                        <i class="fas fa-arrow-right"></i>
+                                        <span class="stop">玫瑰堂</span>
+                                        <i class="fas fa-arrow-right"></i>
+                                        <span class="stop">妈阁庙</span>
+                                    </div>
+                                </div>
+
+                                <div class="route-template" draggable="true" data-route="taipa">
+                                    <div class="route-header">
+                                        <div class="route-icon-large" style="background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);">
+                                            <i class="fas fa-home"></i>
+                                        </div>
+                                        <div class="route-title">
+                                            <h4 data-i18n="taipaRoute">氹仔美食文化游</h4>
+                                            <span class="route-time"><i class="fas fa-clock"></i> 3-4小时</span>
+                                        </div>
+                                    </div>
+                                    <div class="route-stops">
+                                        <span class="stop">龙环葡韵</span>
+                                        <i class="fas fa-arrow-right"></i>
+                                        <span class="stop">官也街</span>
+                                        <i class="fas fa-arrow-right"></i>
+                                        <span class="stop">大潭山</span>
+                                    </div>
+                                </div>
+
+                                <div class="route-template" draggable="true" data-route="cotai">
+                                    <div class="route-header">
+                                        <div class="route-icon-large" style="background: linear-gradient(135deg, #fa709a 0%, #fee140 100%);">
+                                            <i class="fas fa-dice"></i>
+                                        </div>
+                                        <div class="route-title">
+                                            <h4 data-i18n="cotaiRoute">路氹城豪华游</h4>
+                                            <span class="route-time"><i class="fas fa-clock"></i> 5-6小时</span>
+                                        </div>
+                                    </div>
+                                    <div class="route-stops">
+                                        <span class="stop">威尼斯人</span>
+                                        <i class="fas fa-arrow-right"></i>
+                                        <span class="stop">巴黎人</span>
+                                        <i class="fas fa-arrow-right"></i>
+                                        <span class="stop">新濠影汇</span>
+                                        <i class="fas fa-arrow-right"></i>
+                                        <span class="stop">伦敦人</span>
+                                    </div>
+                                </div>
+
+                                <div class="route-template" draggable="true" data-route="nature">
+                                    <div class="route-header">
+                                        <div class="route-icon-large" style="background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%);">
+                                            <i class="fas fa-leaf"></i>
+                                        </div>
+                                        <div class="route-title">
+                                            <h4 data-i18n="natureRoute">自然风光游</h4>
+                                            <span class="route-time"><i class="fas fa-clock"></i> 6-7小时</span>
+                                        </div>
+                                    </div>
+                                    <div class="route-stops">
+                                        <span class="stop">黑沙海滩</span>
+                                        <i class="fas fa-arrow-right"></i>
+                                        <span class="stop">路环市区</span>
+                                        <i class="fas fa-arrow-right"></i>
+                                        <span class="stop">竹湾泳池</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Restaurants Tab -->
+                    <div class="tab-content" id="restaurants-tab">
+                        <div class="restaurants-container">
+                            <div class="restaurants-header">
+                                <h3><i class="fas fa-utensils"></i> 推荐餐厅</h3>
+                                <p class="restaurants-subtitle">AI根据您的行程和时间推荐</p>
+                            </div>
+                            
+                            <!-- 餐厅列表 -->
+                            <div class="restaurants-list">
+                                <div class="restaurant-card" data-restaurant="wong-chi-kei">
+                                    <div class="restaurant-image">
+                                        <img src="https://images.unsplash.com/photo-1563245372-f21724e3856d?w=400&h=300&fit=crop" alt="黄枝记">
+                                        <div class="restaurant-rating">
+                                            <i class="fas fa-star"></i> 4.5
+                                        </div>
+                                    </div>
+                                    <div class="restaurant-content">
+                                        <div class="restaurant-header">
+                                            <h4>黄枝记粥面专家</h4>
+                                            <span class="restaurant-price">$$</span>
+                                        </div>
+                                        <p class="restaurant-desc">70年老字号，以云吞面闻名，鲜虾云吞个大饱满，面条弹牙有劲。</p>
+                                        <div class="restaurant-info">
+                                            <span class="info-item"><i class="fas fa-map-marker-alt"></i> 议事亭前地</span>
+                                            <span class="info-item"><i class="fas fa-clock"></i> 07:00-23:00</span>
+                                        </div>
+                                        <div class="restaurant-tags">
+                                            <span class="r-tag">米其林推荐</span>
+                                            <span class="r-tag">老字号</span>
+                                            <span class="r-tag">本地菜</span>
+                                        </div>
+                                        <div class="restaurant-actions">
+                                            <button class="btn-reserve" data-restaurant="wong-chi-kei" data-name="黄枝记粥面专家">
+                                                <i class="fas fa-phone-alt"></i> AI电话预定
+                                            </button>
+                                            <button class="btn-add-trip">
+                                                <i class="fas fa-plus"></i> 加入行程
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div class="restaurant-card" data-restaurant="lord-stows">
+                                    <div class="restaurant-image">
+                                        <img src="https://images.unsplash.com/photo-1551024601-bec78aea704b?w=400&h=300&fit=crop" alt="安德鲁">
+                                        <div class="restaurant-rating">
+                                            <i class="fas fa-star"></i> 4.7
+                                        </div>
+                                    </div>
+                                    <div class="restaurant-content">
+                                        <div class="restaurant-header">
+                                            <h4>安德鲁饼店</h4>
+                                            <span class="restaurant-price">$</span>
+                                        </div>
+                                        <p class="restaurant-desc">葡式蛋挞创始店，外皮酥脆，蛋馅香浓，是来澳门必吃的美食。</p>
+                                        <div class="restaurant-info">
+                                            <span class="info-item"><i class="fas fa-map-marker-alt"></i> 官也街</span>
+                                            <span class="info-item"><i class="fas fa-clock"></i> 10:00-22:00</span>
+                                        </div>
+                                        <div class="restaurant-tags">
+                                            <span class="r-tag">葡式</span>
+                                            <span class="r-tag">甜品</span>
+                                            <span class="r-tag">必吃</span>
+                                        </div>
+                                        <div class="restaurant-actions">
+                                            <button class="btn-reserve" data-restaurant="lord-stows" data-name="安德鲁饼店">
+                                                <i class="fas fa-phone-alt"></i> AI电话预定
+                                            </button>
+                                            <button class="btn-add-trip">
+                                                <i class="fas fa-plus"></i> 加入行程
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div class="restaurant-card" data-restaurant="robuchon">
+                                    <div class="restaurant-image">
+                                        <img src="https://images.unsplash.com/photo-1552566626-52f8b828add9?w=400&h=300&fit=crop" alt="Robuchon">
+                                        <div class="restaurant-rating">
+                                            <i class="fas fa-star"></i> 4.9
+                                        </div>
+                                    </div>
+                                    <div class="restaurant-content">
+                                        <div class="restaurant-header">
+                                            <h4>Robuchon au Dôme</h4>
+                                            <span class="restaurant-price">$$$$</span>
+                                        </div>
+                                        <p class="restaurant-desc">米其林三星法式餐厅，位于新葡京酒店43楼，可俯瞰澳门全景。</p>
+                                        <div class="restaurant-info">
+                                            <span class="info-item"><i class="fas fa-map-marker-alt"></i> 新葡京酒店</span>
+                                            <span class="info-item"><i class="fas fa-clock"></i> 12:00-14:30, 18:30-22:30</span>
+                                        </div>
+                                        <div class="restaurant-tags">
+                                            <span class="r-tag">米其林三星</span>
+                                            <span class="r-tag">法式</span>
+                                            <span class="r-tag">景观</span>
+                                        </div>
+                                        <div class="restaurant-actions">
+                                            <button class="btn-reserve" data-restaurant="robuchon" data-name="Robuchon au Dôme">
+                                                <i class="fas fa-phone-alt"></i> AI电话预定
+                                            </button>
+                                            <button class="btn-add-trip">
+                                                <i class="fas fa-plus"></i> 加入行程
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Attractions Tab -->
+                    <div class="tab-content" id="attractions-tab">
+                        <div class="attractions-container">
+                            <h3 data-i18n="popularAttractions">热门景点</h3>
+                            
+                            <div class="filter-tags">
+                                <button class="filter-tag active" data-filter="all">全部</button>
+                                <button class="filter-tag" data-filter="historic">历史</button>
+                                <button class="filter-tag" data-filter="food">美食</button>
+                                <button class="filter-tag" data-filter="nature">自然</button>
+                            </div>
+
+                            <div class="attractions-list">
+                                <div class="attraction-card" draggable="true" data-attraction="ruins" data-duration="60">
+                                    <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=400&h=300&fit=crop" alt="Ruins">
+                                    <div class="attraction-card-info">
+                                        <div class="attraction-card-header">
+                                            <h4 data-i18n="ruins">大三巴牌坊</h4>
+                                            <span class="duration-badge">60min</span>
+                                        </div>
+                                        <div class="attraction-meta">
+                                            <span class="crowd-status high">
+                                                <i class="fas fa-users"></i> 拥挤
+                                            </span>
+                                            <span class="rating">
+                                                <i class="fas fa-star"></i> 4.8
+                                            </span>
+                                        </div>
+                                        <p class="attraction-desc">澳门最著名的地标，圣保禄大教堂遗址</p>
+                                    </div>
+                                </div>
+
+                                <div class="attraction-card" draggable="true" data-attraction="tower" data-duration="120">
+                                    <img src="https://images.unsplash.com/photo-1548115184-bc6544d06a58?w=400&h=300&fit=crop" alt="Tower">
+                                    <div class="attraction-card-info">
+                                        <div class="attraction-card-header">
+                                            <h4 data-i18n="macauTower">澳门旅游塔</h4>
+                                            <span class="duration-badge">120min</span>
+                                        </div>
+                                        <div class="attraction-meta">
+                                            <span class="crowd-status medium">
+                                                <i class="fas fa-users"></i> 适中
+                                            </span>
+                                            <span class="rating">
+                                                <i class="fas fa-star"></i> 4.6
+                                            </span>
+                                        </div>
+                                        <p class="attraction-desc">338米高，可体验蹦极跳</p>
+                                    </div>
+                                </div>
+
+                                <div class="attraction-card" draggable="true" data-attraction="venetian" data-duration="180">
+                                    <img src="https://images.unsplash.com/photo-1569949381669-ecf31ae8e613?w=400&h=300&fit=crop" alt="Venetian">
+                                    <div class="attraction-card-info">
+                                        <div class="attraction-card-header">
+                                            <h4 data-i18n="venetian">威尼斯人</h4>
+                                            <span class="duration-badge">180min</span>
+                                        </div>
+                                        <div class="attraction-meta">
+                                            <span class="crowd-status high">
+                                                <i class="fas fa-users"></i> 拥挤
+                                            </span>
+                                            <span class="rating">
+                                                <i class="fas fa-star"></i> 4.7
+                                            </span>
+                                        </div>
+                                        <p class="attraction-desc">豪华度假村，室内运河与贡多拉</p>
+                                    </div>
+                                </div>
+
+                                <div class="attraction-card" draggable="true" data-attraction="senado" data-duration="45">
+                                    <img src="https://images.unsplash.com/photo-1598890777032-bde83547de55?w=400&h=300&fit=crop" alt="Senado">
+                                    <div class="attraction-card-info">
+                                        <div class="attraction-card-header">
+                                            <h4 data-i18n="senadoSquare">议事亭前地</h4>
+                                            <span class="duration-badge">45min</span>
+                                        </div>
+                                        <div class="attraction-meta">
+                                            <span class="crowd-status high">
+                                                <i class="fas fa-users"></i> 拥挤
+                                            </span>
+                                            <span class="rating">
+                                                <i class="fas fa-star"></i> 4.5
+                                            </span>
+                                        </div>
+                                        <p class="attraction-desc">澳门的市中心，波浪形地砖广场</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- AI Chat Assistant (Fixed at bottom) -->
+                <div class="chat-section">
+                    <div class="chat-header">
+                        <i class="fas fa-robot"></i>
+                        <span data-i18n="aiAssistant">AI智能助手</span>
+                        <span class="chat-context" id="chat-context">概览</span>
+                    </div>
+                    <div class="chat-messages" id="chat-messages">
+                        <div class="message ai-message">
+                            <div class="message-bubble">
+                                <p data-i18n="welcomeMsg">您好！我是您的澳门旅游AI助手。当前在「概览」页面，我可以帮您查看行程概览信息。有什么可以帮您的吗？</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="chat-input-area">
+                        <input type="text" id="chat-input" placeholder="输入您的问题..." data-i18n-placeholder="askPlaceholder">
+                        <button id="send-btn"><i class="fas fa-paper-plane"></i></button>
+                    </div>
                 </div>
             </aside>
 
-            <!-- Right Panel - Map & Timeline -->
+            <!-- Right Panel -->
             <main class="right-panel">
                 <!-- Map Section -->
                 <div class="map-section">
@@ -702,143 +681,451 @@
                         height="100%" 
                         style="border:0;" 
                         allowfullscreen="" 
-                        loading="lazy">
+                        loading="lazy" 
+                        referrerpolicy="no-referrer-when-downgrade">
                     </iframe>
                     <div class="map-controls">
-                        <button class="map-btn" title="定位"><i class="fas fa-crosshairs"></i></button>
-                        <button class="map-btn" title="全屏"><i class="fas fa-expand"></i></button>
+                        <button class="map-btn" id="locate-btn" title="定位到澳门"><i class="fas fa-crosshairs"></i></button>
+                        <button class="map-btn" id="fullscreen-btn" title="全屏查看"><i class="fas fa-expand"></i></button>
                     </div>
-                    <div class="map-route-info">
-                        <div><i class="fas fa-route"></i> 今日路線</div>
-                        <div>全程約 15.2km · 預計 8小時</div>
+                    <div class="map-attractions-overlay">
+                        <div class="map-attraction-marker" style="top: 35%; left: 45%;" data-name="Ruins of St. Paul's">
+                            <div class="marker-pin"><i class="fas fa-landmark"></i></div>
+                            <div class="marker-label">大三巴</div>
+                        </div>
+                        <div class="map-attraction-marker" style="top: 55%; left: 40%;" data-name="Macau Tower">
+                            <div class="marker-pin"><i class="fas fa-tower-observation"></i></div>
+                            <div class="marker-label">旅游塔</div>
+                        </div>
+                        <div class="map-attraction-marker" style="top: 70%; left: 60%;" data-name="The Venetian">
+                            <div class="marker-pin"><i class="fas fa-hotel"></i></div>
+                            <div class="marker-label">威尼斯人</div>
+                        </div>
+                        <div class="map-attraction-marker" style="top: 40%; left: 42%;" data-name="Senado Square">
+                            <div class="marker-pin"><i class="fas fa-square"></i></div>
+                            <div class="marker-label">议事亭</div>
+                        </div>
                     </div>
                 </div>
 
                 <!-- Timeline Section -->
                 <div class="timeline-section">
                     <div class="timeline-header">
-                        <h4><i class="fas fa-clock"></i> 行程時間軸</h4>
-                        <span class="timeline-date">Day 1 · 2月4日（周二）</span>
+                        <h4 data-i18n="timeline">行程时间轴</h4>
+                        <span class="timeline-date">Day 1 - 2026.02.04</span>
                     </div>
                     <div class="timeline-container" id="timeline">
+                        <!-- Time markers (draggable to shift all items) -->
                         <div class="time-axis" id="time-axis">
-                            <div class="time-marker" style="left: 0%"><span>08:00</span></div>
-                            <div class="time-marker" style="left: 25%"><span>12:00</span></div>
-                            <div class="time-marker" style="left: 50%"><span>16:00</span></div>
-                            <div class="time-marker" style="left: 75%"><span>20:00</span></div>
-                            <div class="time-marker" style="left: 100%"><span>24:00</span></div>
+                            <div class="time-axis-hint">
+                                <i class="fas fa-arrows-alt-h"></i>
+                                <span>拖动平移整个行程</span>
+                            </div>
+                            <div class="time-marker" data-time="8" data-base-left="0" style="left: 0%"><span>08:00</span></div>
+                            <div class="time-marker" data-time="10" data-base-left="12.5" style="left: 12.5%"><span>10:00</span></div>
+                            <div class="time-marker" data-time="12" data-base-left="25" style="left: 25%"><span>12:00</span></div>
+                            <div class="time-marker" data-time="14" data-base-left="37.5" style="left: 37.5%"><span>14:00</span></div>
+                            <div class="time-marker" data-time="16" data-base-left="50" style="left: 50%"><span>16:00</span></div>
+                            <div class="time-marker" data-time="18" data-base-left="62.5" style="left: 62.5%"><span>18:00</span></div>
+                            <div class="time-marker" data-time="20" data-base-left="75" style="left: 75%"><span>20:00</span></div>
+                            <div class="time-marker" data-time="22" data-base-left="87.5" style="left: 87.5%"><span>22:00</span></div>
+                            <div class="time-marker" data-time="24" data-base-left="100" style="left: 100%"><span>24:00</span></div>
                         </div>
                         
+                        <!-- Grid lines -->
+                        <div class="timeline-grid">
+                            <div class="grid-line" style="left: 0%"></div>
+                            <div class="grid-line" style="left: 12.5%"></div>
+                            <div class="grid-line" style="left: 25%"></div>
+                            <div class="grid-line" style="left: 37.5%"></div>
+                            <div class="grid-line" style="left: 50%"></div>
+                            <div class="grid-line" style="left: 62.5%"></div>
+                            <div class="grid-line" style="left: 75%"></div>
+                            <div class="grid-line" style="left: 87.5%"></div>
+                            <div class="grid-line" style="left: 100%"></div>
+                        </div>
+                        
+                        <!-- Current time indicator -->
+                        <div class="current-time-line" id="current-time-line" style="left: 45%;"></div>
+                        
+                        <!-- Snap guide (hidden by default) -->
+                        <div class="snap-guide" id="snap-guide"></div>
+                        
+                        <!-- Timeline track (drop zone) -->
                         <div class="timeline-track" id="timeline-track">
-                            <!-- Timeline items will be dynamically generated -->
-                            <div class="timeline-item attraction" style="left: 5%; width: 12%;" data-time="09:00" data-duration="90">
-                                <div class="time-tooltip">09:00 - 10:30</div>
+                            <!-- Example items -->
+                            <div class="timeline-item attraction-item-timeline" style="left: 8%; width: 8%;" data-duration="60" data-name="大三巴牌坊" data-fast="30" data-standard="60" data-leisure="90">
+                                <div class="item-name-tooltip">大三巴牌坊</div>
+                                <div class="time-tooltip">09:00 - 10:00</div>
+                                <div class="ai-duration-selector">
+                                    <div class="ai-duration-title">🤖 AI推荐时长</div>
+                                    <div class="ai-duration-option fast" data-time="30">
+                                        <i class="fas fa-running"></i>
+                                        <span>快速打卡</span>
+                                        <span class="ai-duration-time">30min</span>
+                                    </div>
+                                    <div class="ai-duration-option standard" data-time="60">
+                                        <i class="fas fa-walking"></i>
+                                        <span>标准游览</span>
+                                        <span class="ai-duration-time">60min</span>
+                                    </div>
+                                    <div class="ai-duration-option leisure" data-time="90">
+                                        <i class="fas fa-coffee"></i>
+                                        <span>悠闲深度</span>
+                                        <span class="ai-duration-time">90min</span>
+                                    </div>
+                                </div>
+                                <div class="item-actions">
+                                    <button class="item-btn ai-time" title="AI推荐时长"><i class="fas fa-robot"></i></button>
+                                    <button class="item-btn edit" title="编辑"><i class="fas fa-pen"></i></button>
+                                    <button class="item-btn delete" title="删除"><i class="fas fa-times"></i></button>
+                                </div>
                                 <div class="item-content">
                                     <i class="fas fa-landmark"></i>
-                                    <span>大三巴</span>
+                                    <span class="item-name">大三巴牌坊</span>
+                                    <span class="item-duration">60min</span>
+                                    <div class="resize-handle"></div>
                                 </div>
+                                <div class="conflict-indicator"><i class="fas fa-exclamation-triangle"></i> 时间冲突</div>
                             </div>
                             
-                            <div class="timeline-item transport" style="left: 17%; width: 4%;" data-type="walk">
+                            <!-- Transport: Walk -->
+                            <div class="timeline-item transport-item" style="left: 16%; width: 3%;" data-type="walk" data-duration="15" data-distance="0.8km">
                                 <div class="transport-tooltip">
-                                    <div>🚶 步行</div>
-                                    <div>15分鐘 · 0.8km</div>
+                                    <div class="transport-tooltip-content">
+                                        <span class="transport-type">🚶 步行</span>
+                                        <span class="transport-duration">15 分钟</span>
+                                        <span class="transport-distance">距离 0.8km</span>
+                                    </div>
                                 </div>
-                                <i class="fas fa-walking"></i>
+                                <div class="transport-content">
+                                    <i class="fas fa-walking"></i>
+                                </div>
+                                <span class="transport-time">15min</span>
                             </div>
                             
-                            <div class="timeline-item attraction" style="left: 22%; width: 10%;" data-time="10:45">
-                                <div class="time-tooltip">10:45 - 12:00</div>
+                            <div class="timeline-item attraction-item-timeline" style="left: 19%; width: 6%;" data-duration="45" data-name="议事亭前地" data-fast="20" data-standard="45" data-leisure="60">
+                                <div class="item-name-tooltip">议事亭前地</div>
+                                <div class="time-tooltip">10:15 - 11:00</div>
+                                <div class="ai-duration-selector">
+                                    <div class="ai-duration-title">🤖 AI推荐时长</div>
+                                    <div class="ai-duration-option fast" data-time="20">
+                                        <i class="fas fa-running"></i>
+                                        <span>快速打卡</span>
+                                        <span class="ai-duration-time">20min</span>
+                                    </div>
+                                    <div class="ai-duration-option standard" data-time="45">
+                                        <i class="fas fa-walking"></i>
+                                        <span>标准游览</span>
+                                        <span class="ai-duration-time">45min</span>
+                                    </div>
+                                    <div class="ai-duration-option leisure" data-time="60">
+                                        <i class="fas fa-coffee"></i>
+                                        <span>悠闲深度</span>
+                                        <span class="ai-duration-time">60min</span>
+                                    </div>
+                                </div>
+                                <div class="item-actions">
+                                    <button class="item-btn ai-time" title="AI推荐时长"><i class="fas fa-robot"></i></button>
+                                    <button class="item-btn edit" title="编辑"><i class="fas fa-pen"></i></button>
+                                    <button class="item-btn delete" title="删除"><i class="fas fa-times"></i></button>
+                                </div>
                                 <div class="item-content">
                                     <i class="fas fa-square"></i>
-                                    <span>議事亭</span>
+                                    <span class="item-name">议事亭前地</span>
+                                    <span class="item-duration">45min</span>
+                                    <div class="resize-handle"></div>
                                 </div>
+                                <div class="conflict-indicator"><i class="fas fa-exclamation-triangle"></i> 时间冲突</div>
                             </div>
                             
-                            <div class="timeline-item lunch" style="left: 35%; width: 15%;" data-time="12:30">
-                                <div class="time-tooltip">12:30 - 14:30</div>
+                            <!-- Transport: Bus -->
+                            <div class="timeline-item transport-item" style="left: 25%; width: 5%;" data-type="bus" data-duration="25" data-distance="3.2km" data-route="MT1路">
+                                <div class="transport-tooltip">
+                                    <div class="transport-tooltip-content">
+                                        <span class="transport-type">🚌 公交车</span>
+                                        <span class="transport-duration">25 分钟</span>
+                                        <span class="transport-distance">MT1路 · 3.2km</span>
+                                    </div>
+                                </div>
+                                <div class="transport-content">
+                                    <i class="fas fa-bus"></i>
+                                </div>
+                                <span class="transport-time">25min</span>
+                            </div>
+                            
+                            <div class="timeline-item attraction-item-timeline lunch" style="left: 31%; width: 10%;" data-duration="90" data-name="午餐" data-fast="45" data-standard="90" data-leisure="120">
+                                <div class="item-name-tooltip">午餐</div>
+                                <div class="time-tooltip">12:00 - 13:30</div>
+                                <div class="ai-duration-selector">
+                                    <div class="ai-duration-title">🤖 AI推荐时长</div>
+                                    <div class="ai-duration-option fast" data-time="45">
+                                        <i class="fas fa-running"></i>
+                                        <span>快速用餐</span>
+                                        <span class="ai-duration-time">45min</span>
+                                    </div>
+                                    <div class="ai-duration-option standard" data-time="90">
+                                        <i class="fas fa-walking"></i>
+                                        <span>标准用餐</span>
+                                        <span class="ai-duration-time">90min</span>
+                                    </div>
+                                    <div class="ai-duration-option leisure" data-time="120">
+                                        <i class="fas fa-coffee"></i>
+                                        <span>悠闲用餐</span>
+                                        <span class="ai-duration-time">2h</span>
+                                    </div>
+                                </div>
+                                <div class="item-actions">
+                                    <button class="item-btn ai-time" title="AI推荐时长"><i class="fas fa-robot"></i></button>
+                                    <button class="item-btn edit" title="编辑"><i class="fas fa-pen"></i></button>
+                                    <button class="item-btn delete" title="删除"><i class="fas fa-times"></i></button>
+                                </div>
                                 <div class="item-content">
                                     <i class="fas fa-utensils"></i>
-                                    <span>午餐</span>
+                                    <span class="item-name">午餐</span>
+                                    <span class="item-duration">90min</span>
+                                    <div class="resize-handle"></div>
                                 </div>
+                                <div class="conflict-indicator"><i class="fas fa-exclamation-triangle"></i> 时间冲突</div>
                             </div>
+                            
+                            <!-- Transport: Shuttle -->
+                            <div class="timeline-item transport-item" style="left: 41%; width: 6%;" data-type="shuttle" data-duration="30" data-distance="5.5km" data-route="威尼斯人发财车">
+                                <div class="transport-tooltip">
+                                    <div class="transport-tooltip-content">
+                                        <span class="transport-type">🚐 发财车</span>
+                                        <span class="transport-duration">30 分钟</span>
+                                        <span class="transport-distance">威尼斯人线 · 5.5km · 免费</span>
+                                    </div>
+                                </div>
+                                <div class="transport-content">
+                                    <i class="fas fa-shuttle-van"></i>
+                                </div>
+                                <span class="transport-time">30min</span>
+                            </div>
+                            
+                            <div class="timeline-item attraction-item-timeline" style="left: 48%; width: 15%;" data-duration="180" data-name="威尼斯人" data-fast="90" data-standard="180" data-leisure="240">
+                                <div class="item-name-tooltip">威尼斯人度假村</div>
+                                <div class="time-tooltip">14:00 - 17:00</div>
+                                <div class="ai-duration-selector">
+                                    <div class="ai-duration-title">🤖 AI推荐时长</div>
+                                    <div class="ai-duration-option fast" data-time="90">
+                                        <i class="fas fa-running"></i>
+                                        <span>快速打卡</span>
+                                        <span class="ai-duration-time">1.5h</span>
+                                    </div>
+                                    <div class="ai-duration-option standard" data-time="180">
+                                        <i class="fas fa-walking"></i>
+                                        <span>标准游览</span>
+                                        <span class="ai-duration-time">3h</span>
+                                    </div>
+                                    <div class="ai-duration-option leisure" data-time="240">
+                                        <i class="fas fa-coffee"></i>
+                                        <span>悠闲深度</span>
+                                        <span class="ai-duration-time">4h</span>
+                                    </div>
+                                </div>
+                                <div class="item-actions">
+                                    <button class="item-btn ai-time" title="AI推荐时长"><i class="fas fa-robot"></i></button>
+                                    <button class="item-btn edit" title="编辑"><i class="fas fa-pen"></i></button>
+                                    <button class="item-btn delete" title="删除"><i class="fas fa-times"></i></button>
+                                </div>
+                                <div class="item-content">
+                                    <i class="fas fa-dharmachakra"></i>
+                                    <span class="item-name">威尼斯人</span>
+                                    <span class="item-duration">3h</span>
+                                    <div class="resize-handle"></div>
+                                </div>
+                                <div class="conflict-indicator"><i class="fas fa-exclamation-triangle"></i> 时间冲突</div>
+                            </div>
+                            
+                            <!-- Transport: Taxi -->
+                            <div class="timeline-item transport-item" style="left: 63%; width: 4%;" data-type="taxi" data-duration="20" data-distance="4.1km" data-route="出租车">
+                                <div class="transport-tooltip">
+                                    <div class="transport-tooltip-content">
+                                        <span class="transport-type">🚕 出租车</span>
+                                        <span class="transport-duration">20 分钟</span>
+                                        <span class="transport-distance">约MOP 45 · 4.1km</span>
+                                    </div>
+                                </div>
+                                <div class="transport-content">
+                                    <i class="fas fa-taxi"></i>
+                                </div>
+                                <span class="transport-time">20min</span>
+                            </div>
+                            
+                            <div class="timeline-item attraction-item-timeline" style="left: 68%; width: 12%;" data-duration="150" data-name="官也街" data-fast="60" data-standard="150" data-leisure="180">
+                                <div class="item-name-tooltip">官也街美食街</div>
+                                <div class="time-tooltip">17:20 - 19:50</div>
+                                <div class="ai-duration-selector">
+                                    <div class="ai-duration-title">🤖 AI推荐时长</div>
+                                    <div class="ai-duration-option fast" data-time="60">
+                                        <i class="fas fa-running"></i>
+                                        <span>快速打卡</span>
+                                        <span class="ai-duration-time">1h</span>
+                                    </div>
+                                    <div class="ai-duration-option standard" data-time="150">
+                                        <i class="fas fa-walking"></i>
+                                        <span>标准游览</span>
+                                        <span class="ai-duration-time">2.5h</span>
+                                    </div>
+                                    <div class="ai-duration-option leisure" data-time="180">
+                                        <i class="fas fa-coffee"></i>
+                                        <span>悠闲深度</span>
+                                        <span class="ai-duration-time">3h</span>
+                                    </div>
+                                </div>
+                                <div class="item-actions">
+                                    <button class="item-btn ai-time" title="AI推荐时长"><i class="fas fa-robot"></i></button>
+                                    <button class="item-btn edit" title="编辑"><i class="fas fa-pen"></i></button>
+                                    <button class="item-btn delete" title="删除"><i class="fas fa-times"></i></button>
+                                </div>
+                                <div class="item-content">
+                                    <i class="fas fa-home"></i>
+                                    <span class="item-name">官也街</span>
+                                    <span class="item-duration">2.5h</span>
+                                    <div class="resize-handle"></div>
+                                </div>
+                                <div class="conflict-indicator"><i class="fas fa-exclamation-triangle"></i> 时间冲突</div>
+                            </div>
+                        </div>
+                        
+                        <!-- Timeline actions -->
+                        <div class="timeline-actions">
+                            <button class="timeline-action-btn" id="clear-timeline">
+                                <i class="fas fa-trash-alt"></i>
+                                <span>清空</span>
+                            </button>
+                            <button class="timeline-action-btn" id="optimize-route">
+                                <i class="fas fa-magic"></i>
+                                <span>智能优化</span>
+                            </button>
+                            <button class="timeline-action-btn" id="check-conflicts">
+                                <i class="fas fa-check-circle"></i>
+                                <span>检查冲突</span>
+                            </button>
+                        </div>
+                        
+                        <div class="timeline-hint">
+                            <i class="fas fa-info-circle"></i>
+                            <span data-i18n="timelineHint">拖动调整位置，拖拽右侧边缘调整时长，悬停查看详情</span>
                         </div>
                     </div>
                 </div>
             </main>
         </div>
+    </div>
 
-        <!-- 小悠 AI 對話框 -->
-        <div class="xiao-you-chat" id="xiaoYouChat">
-            <div class="chat-header" onclick="toggleChat()">
-                <div class="xiao-you-avatar">
-                    <i class="fas fa-robot"></i>
-                </div>
-                <div class="xiao-you-info">
-                    <span class="name">小悠</span>
-                    <span class="status">在線</span>
-                </div>
-                <i class="fas fa-chevron-down toggle-icon"></i>
+    <!-- 餐厅预定弹窗 -->
+    <div class="modal-overlay" id="reserve-modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3><i class="fas fa-phone-alt"></i> AI电话预定</h3>
+                <button class="modal-close" id="modal-close"><i class="fas fa-times"></i></button>
             </div>
-            <div class="chat-body">
-                <div class="chat-messages" id="chatMessages">
-                    <div class="message ai">
-                        <div class="message-content">
-                            您好！我是小悠，您的澳門旅遊AI助手。有什麼可以幫您的嗎？😊
-                        </div>
+            <div class="modal-body">
+                <div class="restaurant-info-header">
+                    <div class="restaurant-avatar">
+                        <i class="fas fa-utensils"></i>
+                    </div>
+                    <div class="restaurant-details">
+                        <h4 id="reserve-restaurant-name">餐厅名称</h4>
+                        <p>AI助手将帮您致电餐厅进行预定</p>
                     </div>
                 </div>
-                <div class="chat-input-area">
-                    <input type="text" id="chatInput" placeholder="輸入問題...">
-                    <button onclick="sendMessage()">
-                        <i class="fas fa-paper-plane"></i>
+                
+                <form class="reserve-form" id="reserve-form">
+                    <div class="form-group">
+                        <label>您的姓名</label>
+                        <input type="text" id="reserve-name" placeholder="请输入您的姓名" required>
+                    </div>
+                    
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>预定日期</label>
+                            <input type="date" id="reserve-date" required>
+                        </div>
+                        <div class="form-group">
+                            <label>预定时间</label>
+                            <select id="reserve-time" required>
+                                <option value="">选择时间</option>
+                                <option value="11:30">11:30</option>
+                                <option value="12:00">12:00</option>
+                                <option value="12:30">12:30</option>
+                                <option value="13:00">13:00</option>
+                                <option value="18:00">18:00</option>
+                                <option value="18:30">18:30</option>
+                                <option value="19:00">19:00</option>
+                                <option value="19:30">19:30</option>
+                                <option value="20:00">20:00</option>
+                                <option value="20:30">20:30</option>
+                            </select>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label>用餐人数</label>
+                        <div class="people-selector">
+                            <button type="button" class="people-btn" data-action="minus"><i class="fas fa-minus"></i></button>
+                            <span class="people-count" id="people-count">2</span>
+                            <button type="button" class="people-btn" data-action="plus"><i class="fas fa-plus"></i></button>
+                            <span class="people-text">人</span>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label>联系电话</label>
+                        <input type="tel" id="reserve-phone" placeholder="+86 1XX XXXX XXXX" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label>特殊需求（选填）</label>
+                        <textarea id="reserve-notes" rows="2" placeholder="如：靠窗位置、素食、过敏信息等"></textarea>
+                    </div>
+                    
+                    <div class="ai-features">
+                        <div class="ai-feature-item">
+                            <i class="fas fa-robot"></i>
+                            <span>AI将使用流利的粤语/普通话与餐厅沟通</span>
+                        </div>
+                        <div class="ai-feature-item">
+                            <i class="fas fa-bell"></i>
+                            <span>预定成功后短信通知您</span>
+                        </div>
+                        <div class="ai-feature-item">
+                            <i class="fas fa-shield-alt"></i>
+                            <span>如餐厅满座，AI会为您推荐备选方案</span>
+                        </div>
+                    </div>
+                    
+                    <button type="submit" class="btn-submit-reserve">
+                        <i class="fas fa-phone-volume"></i>
+                        <span>开始AI电话预定</span>
                     </button>
-                </div>
-                <div class="quick-questions">
-                    <button onclick="askQuestion('大三巴現在擁擠嗎？')">大三巴擁擠度</button>
-                    <button onclick="askQuestion('推薦官也街美食')">官也街美食</button>
-                    <button onclick="askQuestion('如何從關閘去威尼斯人？')">關閘交通</button>
-                </div>
+                </form>
             </div>
         </div>
     </div>
 
-    <!-- Modals -->
-    <!-- 菜單AI解讀 Modal -->
-    <div class="modal" id="menuModal">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h3><i class="fas fa-camera"></i> AI智能菜單解讀</h3>
-                <button class="close-btn" onclick="closeModal('menuModal')">
-                    <i class="fas fa-times"></i>
-                </button>
+    <!-- 预定成功提示 -->
+    <div class="modal-overlay" id="success-modal">
+        <div class="modal-content success-content">
+            <div class="success-icon">
+                <i class="fas fa-check-circle"></i>
             </div>
-            <div class="modal-body">
-                <div class="menu-upload-area">
-                    <i class="fas fa-cloud-upload-alt"></i>
-                    <p>拍照或上傳菜單圖片</p>
-                    <small>AI將自動識別並標註推薦菜品</small>
-                </div>
-                <div class="menu-demo">
-                    <h4>示範：已解讀菜單</h4>
-                    <div class="menu-item-ai">
-                        <div class="dish-img"></div>
-                        <div class="dish-info">
-                            <div class="dish-name">
-                                馬介休球
-                                <span class="ai-tag signature">招牌推薦</span>
-                            </div>
-                            <p class="dish-desc">經過鹽醃製的鱈魚，混合薯泥炸至金黃，是澳門經典葡式小吃。</p>
-                            <p class="dish-pairing">
-                                <i class="fas fa-utensils"></i> 搭配建議：配葡萄牙紅酒或凍檸茶
-                            </p>
-                        </div>
-                    </div>
-                </div>
+            <h3>AI正在为您预定</h3>
+            <p class="success-text">AI助手已拨通电话，正在与餐厅沟通中...</p>
+            <div class="call-simulation">
+                <div class="call-wave"></div>
+                <div class="call-wave"></div>
+                <div class="call-wave"></div>
             </div>
+            <p class="success-detail">预计30秒内完成，结果将短信通知您</p>
+            <button class="btn-close-success" id="btn-close-success">知道了</button>
         </div>
     </div>
 
     <script src="app.js"></script>
+    <script src="app-new.js"></script>
 </body>
 </html>

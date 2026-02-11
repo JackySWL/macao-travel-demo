@@ -1,0 +1,974 @@
+/* ========================================
+   New Features Styles
+   ======================================== */
+
+/* ========================================
+   Time Selector - Month & Date
+   ======================================== */
+
+.time-selector-stage {
+    margin-bottom: 20px;
+    padding: 16px;
+    background: var(--bg-primary);
+    border-radius: var(--radius-md);
+    border: 1px solid var(--bg-border);
+}
+
+.stage-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 12px;
+}
+
+.stage-label {
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--text-primary);
+}
+
+/* Month Selector */
+.month-selector {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    gap: 8px;
+}
+
+.month-btn {
+    padding: 10px 4px;
+    border: 1px solid var(--bg-border);
+    background: var(--bg-secondary);
+    color: var(--text-secondary);
+    border-radius: var(--radius-sm);
+    cursor: pointer;
+    font-size: 0.8rem;
+    transition: all 0.15s ease;
+}
+
+.month-btn:hover {
+    background: var(--primary-light);
+    border-color: var(--primary-blue);
+    color: var(--primary-blue);
+}
+
+.month-btn.active {
+    background: var(--primary-blue);
+    border-color: var(--primary-blue);
+    color: white;
+    font-weight: 600;
+}
+
+/* Toggle Switch */
+.toggle-date {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    cursor: pointer;
+    font-size: 0.8rem;
+}
+
+.toggle-date input {
+    display: none;
+}
+
+.toggle-slider {
+    width: 44px;
+    height: 24px;
+    background: var(--bg-border);
+    border-radius: 12px;
+    position: relative;
+    transition: background 0.3s;
+}
+
+.toggle-slider::after {
+    content: '';
+    position: absolute;
+    top: 2px;
+    left: 2px;
+    width: 20px;
+    height: 20px;
+    background: white;
+    border-radius: 50%;
+    transition: transform 0.3s;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+}
+
+.toggle-date input:checked + .toggle-slider {
+    background: var(--primary-blue);
+}
+
+.toggle-date input:checked + .toggle-slider::after {
+    transform: translateX(20px);
+}
+
+.toggle-text {
+    color: var(--text-secondary);
+}
+
+/* Date Range Picker */
+.date-range-picker {
+    margin-top: 12px;
+}
+
+.date-input-group {
+    display: flex;
+    align-items: flex-end;
+    gap: 12px;
+    margin-bottom: 12px;
+}
+
+.date-field {
+    flex: 1;
+}
+
+.date-field label {
+    display: block;
+    font-size: 0.75rem;
+    color: var(--text-muted);
+    margin-bottom: 6px;
+}
+
+.date-field input {
+    width: 100%;
+    padding: 10px 12px;
+    border: 1px solid var(--bg-border);
+    border-radius: var(--radius-sm);
+    font-size: 0.85rem;
+    color: var(--text-primary);
+    background: var(--bg-secondary);
+}
+
+.date-separator {
+    color: var(--text-muted);
+    padding-bottom: 10px;
+}
+
+.trip-duration-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 16px;
+    background: linear-gradient(135deg, var(--primary-light), #e8f4fd);
+    border-radius: 20px;
+    font-size: 0.85rem;
+    color: var(--primary-dark);
+}
+
+.trip-duration-badge i {
+    color: var(--primary-blue);
+}
+
+/* ========================================
+   Events Tab
+   ======================================== */
+
+.events-container {
+    padding: 4px;
+}
+
+.events-header {
+    margin-bottom: 16px;
+}
+
+.events-header h3 {
+    font-size: 1rem;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 4px;
+}
+
+.events-header h3 i {
+    color: var(--accent-orange);
+}
+
+.events-subtitle {
+    font-size: 0.8rem;
+    color: var(--text-muted);
+}
+
+.events-filter {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 16px;
+    overflow-x: auto;
+    padding-bottom: 4px;
+}
+
+.event-filter-btn {
+    padding: 8px 16px;
+    border: 1px solid var(--bg-border);
+    background: var(--bg-secondary);
+    color: var(--text-secondary);
+    border-radius: 20px;
+    cursor: pointer;
+    font-size: 0.8rem;
+    white-space: nowrap;
+    transition: all 0.15s ease;
+}
+
+.event-filter-btn:hover {
+    background: var(--bg-hover);
+}
+
+.event-filter-btn.active {
+    background: var(--primary-blue);
+    border-color: var(--primary-blue);
+    color: white;
+}
+
+/* Event Cards */
+.events-list {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.event-card {
+    background: var(--bg-secondary);
+    border-radius: var(--radius-md);
+    overflow: hidden;
+    border: 1px solid var(--bg-border);
+    transition: all 0.2s ease;
+}
+
+.event-card:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-md);
+}
+
+.event-image {
+    position: relative;
+    height: 140px;
+    overflow: hidden;
+}
+
+.event-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s;
+}
+
+.event-card:hover .event-image img {
+    transform: scale(1.05);
+}
+
+.event-date-badge {
+    position: absolute;
+    top: 12px;
+    left: 12px;
+    padding: 6px 12px;
+    background: rgba(0,0,0,0.75);
+    color: white;
+    border-radius: 20px;
+    font-size: 0.75rem;
+    font-weight: 500;
+}
+
+.event-content {
+    padding: 16px;
+}
+
+.event-tags {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 10px;
+}
+
+.event-tag {
+    padding: 4px 10px;
+    border-radius: 12px;
+    font-size: 0.7rem;
+    font-weight: 500;
+}
+
+.event-tag.festival {
+    background: #fce4ec;
+    color: #e91e63;
+}
+
+.event-tag.culture {
+    background: #e8f5e9;
+    color: #4caf50;
+}
+
+.event-tag.food {
+    background: #fff3e0;
+    color: #ff9800;
+}
+
+.event-tag.music {
+    background: #f3e5f5;
+    color: #9c27b0;
+}
+
+.event-tag.free {
+    background: #e3f2fd;
+    color: #2196f3;
+}
+
+.event-tag.paid {
+    background: #ffebee;
+    color: #f44336;
+}
+
+.event-title {
+    font-size: 0.95rem;
+    font-weight: 600;
+    margin-bottom: 8px;
+    color: var(--text-primary);
+}
+
+.event-desc {
+    font-size: 0.8rem;
+    color: var(--text-secondary);
+    line-height: 1.5;
+    margin-bottom: 12px;
+}
+
+.event-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.event-location {
+    font-size: 0.75rem;
+    color: var(--text-muted);
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+
+.event-add-btn {
+    padding: 8px 14px;
+    background: var(--primary-blue);
+    color: white;
+    border: none;
+    border-radius: var(--radius-sm);
+    font-size: 0.8rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    transition: all 0.15s ease;
+}
+
+.event-add-btn:hover {
+    background: var(--primary-dark);
+    transform: scale(1.02);
+}
+
+/* ========================================
+   Restaurants Tab
+   ======================================== */
+
+.restaurants-container {
+    padding: 4px;
+}
+
+.restaurants-header {
+    margin-bottom: 16px;
+}
+
+.restaurants-header h3 {
+    font-size: 1rem;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 4px;
+}
+
+.restaurants-header h3 i {
+    color: var(--accent-orange);
+}
+
+.restaurants-subtitle {
+    font-size: 0.8rem;
+    color: var(--text-muted);
+}
+
+.restaurants-list {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.restaurant-card {
+    background: var(--bg-secondary);
+    border-radius: var(--radius-md);
+    overflow: hidden;
+    border: 1px solid var(--bg-border);
+    transition: all 0.2s ease;
+}
+
+.restaurant-card:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-md);
+}
+
+.restaurant-image {
+    position: relative;
+    height: 160px;
+    overflow: hidden;
+}
+
+.restaurant-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.restaurant-rating {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    padding: 6px 12px;
+    background: rgba(255,255,255,0.95);
+    border-radius: 20px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--accent-orange);
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+
+.restaurant-content {
+    padding: 16px;
+}
+
+.restaurant-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 8px;
+}
+
+.restaurant-header h4 {
+    font-size: 1rem;
+    font-weight: 600;
+}
+
+.restaurant-price {
+    font-size: 0.9rem;
+    color: var(--text-muted);
+    font-weight: 500;
+}
+
+.restaurant-desc {
+    font-size: 0.8rem;
+    color: var(--text-secondary);
+    line-height: 1.5;
+    margin-bottom: 12px;
+}
+
+.restaurant-info {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-bottom: 12px;
+}
+
+.info-item {
+    font-size: 0.75rem;
+    color: var(--text-muted);
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+
+.restaurant-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin-bottom: 16px;
+}
+
+.r-tag {
+    padding: 4px 10px;
+    background: var(--bg-primary);
+    border-radius: 12px;
+    font-size: 0.7rem;
+    color: var(--text-secondary);
+}
+
+.restaurant-actions {
+    display: flex;
+    gap: 10px;
+}
+
+.btn-reserve {
+    flex: 1;
+    padding: 10px 16px;
+    background: linear-gradient(135deg, var(--accent-green), #00b894);
+    color: white;
+    border: none;
+    border-radius: var(--radius-sm);
+    font-size: 0.85rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    transition: all 0.15s ease;
+}
+
+.btn-reserve:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(16, 185, 129, 0.4);
+}
+
+.btn-add-trip {
+    padding: 10px 16px;
+    background: var(--bg-primary);
+    color: var(--text-secondary);
+    border: 1px solid var(--bg-border);
+    border-radius: var(--radius-sm);
+    font-size: 0.85rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    transition: all 0.15s ease;
+}
+
+.btn-add-trip:hover {
+    background: var(--bg-hover);
+    border-color: var(--primary-blue);
+    color: var(--primary-blue);
+}
+
+/* ========================================
+   Modal - Reservation
+   ======================================== */
+
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0,0,0,0.6);
+    backdrop-filter: blur(4px);
+    z-index: 10000;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+}
+
+.modal-overlay.show {
+    display: flex;
+}
+
+.modal-content {
+    background: var(--bg-secondary);
+    border-radius: var(--radius-lg);
+    width: 100%;
+    max-width: 480px;
+    max-height: 90vh;
+    overflow-y: auto;
+    animation: modalSlideUp 0.3s ease;
+}
+
+@keyframes modalSlideUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    border-bottom: 1px solid var(--bg-border);
+}
+
+.modal-header h3 {
+    font-size: 1.1rem;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.modal-header h3 i {
+    color: var(--accent-green);
+}
+
+.modal-close {
+    width: 36px;
+    height: 36px;
+    border: none;
+    background: var(--bg-primary);
+    border-radius: 50%;
+    cursor: pointer;
+    color: var(--text-secondary);
+    transition: all 0.15s ease;
+}
+
+.modal-close:hover {
+    background: var(--accent-red);
+    color: white;
+}
+
+.modal-body {
+    padding: 20px;
+}
+
+.restaurant-info-header {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    padding: 16px;
+    background: var(--bg-primary);
+    border-radius: var(--radius-md);
+    margin-bottom: 20px;
+}
+
+.restaurant-avatar {
+    width: 56px;
+    height: 56px;
+    background: linear-gradient(135deg, var(--primary-blue), var(--primary-dark));
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 1.5rem;
+}
+
+.restaurant-details h4 {
+    font-size: 1rem;
+    font-weight: 600;
+    margin-bottom: 4px;
+}
+
+.restaurant-details p {
+    font-size: 0.8rem;
+    color: var(--text-secondary);
+}
+
+/* Form */
+.reserve-form .form-group {
+    margin-bottom: 16px;
+}
+
+.reserve-form label {
+    display: block;
+    font-size: 0.8rem;
+    font-weight: 500;
+    color: var(--text-primary);
+    margin-bottom: 6px;
+}
+
+.reserve-form input,
+.reserve-form select,
+.reserve-form textarea {
+    width: 100%;
+    padding: 12px 14px;
+    border: 1px solid var(--bg-border);
+    border-radius: var(--radius-sm);
+    font-size: 0.9rem;
+    color: var(--text-primary);
+    background: var(--bg-secondary);
+    transition: border-color 0.15s;
+}
+
+.reserve-form input:focus,
+.reserve-form select:focus,
+.reserve-form textarea:focus {
+    outline: none;
+    border-color: var(--primary-blue);
+}
+
+.form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+}
+
+/* People Selector */
+.people-selector {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.people-btn {
+    width: 40px;
+    height: 40px;
+    border: 1px solid var(--bg-border);
+    background: var(--bg-secondary);
+    border-radius: var(--radius-sm);
+    cursor: pointer;
+    color: var(--text-secondary);
+    transition: all 0.15s;
+}
+
+.people-btn:hover {
+    background: var(--primary-blue);
+    border-color: var(--primary-blue);
+    color: white;
+}
+
+.people-count {
+    font-size: 1.2rem;
+    font-weight: 600;
+    min-width: 30px;
+    text-align: center;
+}
+
+.people-text {
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+}
+
+/* AI Features */
+.ai-features {
+    background: linear-gradient(135deg, #f0f9ff, #e0f2fe);
+    border-radius: var(--radius-md);
+    padding: 16px;
+    margin-bottom: 20px;
+}
+
+.ai-feature-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 0.8rem;
+    color: var(--text-secondary);
+    margin-bottom: 10px;
+}
+
+.ai-feature-item:last-child {
+    margin-bottom: 0;
+}
+
+.ai-feature-item i {
+    color: var(--primary-blue);
+    width: 20px;
+    text-align: center;
+}
+
+/* Submit Button */
+.btn-submit-reserve {
+    width: 100%;
+    padding: 16px;
+    background: linear-gradient(135deg, var(--accent-green), #00b894);
+    color: white;
+    border: none;
+    border-radius: var(--radius-md);
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    transition: all 0.15s;
+}
+
+.btn-submit-reserve:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(16, 185, 129, 0.4);
+}
+
+/* Success Modal */
+.success-content {
+    text-align: center;
+    padding: 40px 30px;
+}
+
+.success-icon {
+    font-size: 4rem;
+    color: var(--accent-green);
+    margin-bottom: 20px;
+    animation: successPulse 0.5s ease;
+}
+
+@keyframes successPulse {
+    0% { transform: scale(0); }
+    50% { transform: scale(1.2); }
+    100% { transform: scale(1); }
+}
+
+.success-content h3 {
+    font-size: 1.3rem;
+    font-weight: 600;
+    margin-bottom: 12px;
+}
+
+.success-text {
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+    margin-bottom: 24px;
+}
+
+.call-simulation {
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+    margin-bottom: 24px;
+}
+
+.call-wave {
+    width: 8px;
+    height: 30px;
+    background: var(--accent-green);
+    border-radius: 4px;
+    animation: callWave 1s ease infinite;
+}
+
+.call-wave:nth-child(2) {
+    animation-delay: 0.1s;
+}
+
+.call-wave:nth-child(3) {
+    animation-delay: 0.2s;
+}
+
+@keyframes callWave {
+    0%, 100% { transform: scaleY(0.5); }
+    50% { transform: scaleY(1); }
+}
+
+.success-detail {
+    font-size: 0.8rem;
+    color: var(--text-muted);
+    margin-bottom: 24px;
+}
+
+.btn-close-success {
+    padding: 12px 32px;
+    background: var(--primary-blue);
+    color: white;
+    border: none;
+    border-radius: var(--radius-md);
+    font-size: 0.95rem;
+    cursor: pointer;
+    transition: all 0.15s;
+}
+
+.btn-close-success:hover {
+    background: var(--primary-dark);
+}
+
+/* ========================================
+   Transport Tooltip Enhancement
+   ======================================== */
+
+.transport-tooltip {
+    position: absolute;
+    bottom: calc(100% + 8px);
+    left: 50%;
+    transform: translateX(-50%);
+    background: var(--text-primary);
+    color: white;
+    padding: 10px 14px;
+    border-radius: 8px;
+    font-size: 0.75rem;
+    white-space: nowrap;
+    opacity: 0;
+    pointer-events: none;
+    transition: all 0.2s;
+    z-index: 100;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+}
+
+.transport-tooltip::after {
+    content: '';
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    border: 6px solid transparent;
+    border-top-color: var(--text-primary);
+}
+
+.transport-item:hover .transport-tooltip {
+    opacity: 1;
+}
+
+.transport-tooltip-content {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.transport-type {
+    font-weight: 600;
+    font-size: 0.8rem;
+}
+
+.transport-duration {
+    color: rgba(255,255,255,0.8);
+}
+
+.transport-distance {
+    color: rgba(255,255,255,0.6);
+    font-size: 0.7rem;
+}
+
+/* ========================================
+   Map Route Lines (Simulated)
+   ======================================== */
+
+.map-route-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 6;
+}
+
+.route-line {
+    position: absolute;
+    height: 3px;
+    background: linear-gradient(90deg, var(--primary-blue), var(--accent-orange));
+    border-radius: 2px;
+    opacity: 0.8;
+    animation: routePulse 2s ease infinite;
+}
+
+@keyframes routePulse {
+    0%, 100% { opacity: 0.6; }
+    50% { opacity: 1; }
+}
+
+.route-dot {
+    position: absolute;
+    width: 8px;
+    height: 8px;
+    background: var(--accent-orange);
+    border-radius: 50%;
+    border: 2px solid white;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.3);
+}
+
+/* Responsive adjustments */
+@media (max-width: 600px) {
+    .month-selector {
+        grid-template-columns: repeat(4, 1fr);
+    }
+    
+    .form-row {
+        grid-template-columns: 1fr;
+    }
+    
+    .restaurant-actions {
+        flex-direction: column;
+    }
+}
