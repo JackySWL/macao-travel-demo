@@ -972,3 +972,145 @@
         flex-direction: column;
     }
 }
+
+/* ========================================
+   UI Polish & Interaction Enhancements
+   ======================================== */
+
+body {
+    background: radial-gradient(circle at 5% 10%, #edf4ff 0%, #f4f7fb 42%, #eef2f7 100%);
+    overflow: auto;
+}
+
+.app-container {
+    min-height: 100vh;
+}
+
+.header {
+    position: sticky;
+    top: 0;
+    z-index: 20;
+    backdrop-filter: blur(10px);
+    background: rgba(255, 255, 255, 0.9);
+}
+
+.main-content {
+    grid-template-columns: minmax(420px, 34%) 1fr;
+    min-height: calc(100vh - 65px);
+    height: auto;
+}
+
+.left-panel {
+    min-width: 0;
+}
+
+.nav-tabs {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.nav-tab {
+    flex: unset;
+    min-height: 66px;
+    border: 1px solid transparent;
+}
+
+.nav-tab.active {
+    background: linear-gradient(135deg, #4a9eff, #1a73e8);
+}
+
+.content-area {
+    padding: 24px;
+}
+
+.right-panel {
+    display: grid;
+    grid-template-rows: minmax(320px, 1.25fr) minmax(300px, 1fr);
+    min-height: 0;
+}
+
+.map-section,
+.timeline-section {
+    margin: 16px 16px 0;
+}
+
+.timeline-section {
+    height: auto;
+    margin-bottom: 16px;
+    border: 1px solid rgba(74, 158, 255, 0.12);
+}
+
+.time-axis {
+    margin-bottom: 10px;
+    border: 1px solid #e6eef8;
+    padding-inline: 8px;
+}
+
+.time-marker {
+    transform: translateX(-50%);
+}
+
+.time-marker span {
+    font-size: 0.7rem;
+    font-weight: 600;
+}
+
+.time-marker.is-selected {
+    background: rgba(74, 158, 255, 0.15);
+    box-shadow: inset 0 0 0 1px rgba(74, 158, 255, 0.35);
+}
+
+.time-marker.is-selected span {
+    color: var(--primary-dark);
+}
+
+.timeline-track {
+    min-height: 132px;
+    border-width: 1px;
+}
+
+.timeline-item {
+    top: 34px;
+}
+
+.timeline-actions {
+    padding-top: 2px;
+}
+
+.timeline-action-btn {
+    border: 1px solid var(--bg-border);
+    background: #fff;
+    font-weight: 600;
+}
+
+.timeline-action-btn:hover {
+    border-color: var(--primary-blue);
+}
+
+.route-icon-large,
+.budget-icon,
+.restaurant-avatar,
+.marker-pin {
+    box-shadow: 0 10px 24px rgba(26, 115, 232, 0.18);
+}
+
+@media (max-width: 1200px) {
+    .main-content {
+        grid-template-columns: minmax(380px, 40%) 1fr;
+    }
+}
+
+@media (max-width: 992px) {
+    .main-content {
+        grid-template-columns: 1fr;
+    }
+
+    .right-panel {
+        grid-template-rows: minmax(300px, 0.95fr) minmax(280px, 1fr);
+    }
+
+    .nav-tabs {
+        grid-template-columns: repeat(6, minmax(0, 1fr));
+        overflow-x: auto;
+    }
+}
